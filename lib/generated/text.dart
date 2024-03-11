@@ -17,4 +17,6 @@ class TEXT {
   static String female = 'Female';
   static String forgotPassword = 'Forgot password?';
   static String reset = 'Reset';
+  static String resetPassword = 'Reset Password';
+  static String enterEmail = 'Enter your email';
 }

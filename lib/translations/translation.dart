@@ -55,6 +55,8 @@ class Localization extends Translations {
           'Enter a valid phone number': 'رقم الهاتف غير صحيح',
           'Forgot password?': 'نسيت كلمة المرور؟',
           'Reset': 'اعادة تعيين',
+          'Reset Password': 'اعادة تعيين كلمة المرور',
+          'Enter your email': 'ادخل بريدك الالكتروني',
         },
         'en_US': {
           'occurred_somewhere.': 'Sorry, a glitch occurred somewhere.',
@@ -107,6 +109,8 @@ class Localization extends Translations {
           'Enter a valid phone number': 'Enter a valid phone number',
           'Forgot password?': 'Forgot password?',
           'Reset': 'Reset',
+          'Reset Password': 'Reset Password',
+          'Enter your email': 'Enter your email',
         },
         'ku': {
           'occurred_somewhere.': 'Bibore, li derekê xeletiyek çêbû.',
@@ -157,6 +161,8 @@ class Localization extends Translations {
           'Enter a valid phone number': 'Nimreyek têlefonê derbasdar binivîse',
           'Forgot password?': 'Şîfre ji bîr kir',
           'Reset': 'Sifre',
+          'Reset Password': 'Şîfre vegerîne',
+          'Enter your email': 'Emaila xwe binivîse',
         },
         'tr': {
           'occurred_somewhere.':
@@ -209,6 +215,8 @@ class Localization extends Translations {
           'Enter a valid phone number': 'Gecersiz telefon numarasi',
           'Forgot password?': 'Sifrenizi mi unuttunuz?',
           'Reset': 'Sifre sıfırlama',
+          'Reset Password': 'Şifreyi yenile',
+          'Enter your email': 'E-postanızı giriniz',
         },
       };
 }

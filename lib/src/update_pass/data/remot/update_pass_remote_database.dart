@@ -5,25 +5,24 @@ import 'package:marketna_app/shared/provider/dio/dio_request_impl.dart';
 import 'package:marketna_app/shared/provider/request/request.dart';
 import 'package:marketna_app/shared/provider/request_parameters/request_parameters.dart';
 
-abstract class ResetPasRemoteDatabase {
+abstract class UpdatePassRemoteDatabase {
   final DioRequest dioRequest;
 
-  ResetPasRemoteDatabase({required this.dioRequest});
-
-  Future<Response> resetpassword({required String email});
+  UpdatePassRemoteDatabase({required this.dioRequest});
+  Future<Response> updatePass({required Map<String, dynamic> data});
 }
 
-class ResetPasRemoteDatabaseImpl implements ResetPasRemoteDatabase {
+class UpdatePassRemoteDatabaseImpl implements UpdatePassRemoteDatabase {
   @override
   DioRequest get dioRequest => DioRequestImpl();
 
   @override
-  Future<Response> resetpassword({required String email}) async {
+  Future<Response> updatePass({required Map<String, dynamic> data}) async {
     Response response = await dioRequest.request(
         requestMethod: RequestMethod.post(
             requestParameters: RequestParameters(
-      url: Strings.resetPass,
-      data: {'email': email},
+      url: Strings.updatePass,
+      data: data,
     )));
     return response;
   }

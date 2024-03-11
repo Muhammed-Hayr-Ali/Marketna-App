@@ -2,31 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marketna_app/generated/app_colors.dart';
 import 'package:marketna_app/generated/text.dart';
-import 'package:marketna_app/routes/app_pages.dart';
 import 'package:marketna_app/shared/validator/validator.dart';
 import 'package:marketna_app/shared/widget/custom_button.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 import 'package:marketna_app/shared/widget/custom_text_field.dart';
 import 'package:marketna_app/shared/widget/title_page.dart';
-import 'package:marketna_app/src/sign_in/presentation/manager/signin_controller.dart';
+import 'package:marketna_app/src/reset_password/presentation/manager/reser_pass_controller.dart';
 
-class SigninScreen extends StatelessWidget {
-  SigninScreen({super.key});
+class ResetPassScreen extends StatelessWidget {
+  ResetPassScreen({super.key});
 
-  final _ = Get.find<SigninController>();
+  final _ = Get.find<ResetPassController>();
   final _formKey = GlobalKey<FormState>();
   final _email = TextEditingController();
-  final _password = TextEditingController();
 
-  Future<void> login() async {
+  Future<void> resetPass() async {
     if (_.isLoading.value) return;
     if (_formKey.currentState!.validate()) {
-      _.signin(email: _email.text, password: _password.text);
+      _.resetPassowrd(email: _email.text);
     }
-  }
-
-  void forgotPassword() {
-    Get.toNamed(AppRoutes.resetPass);
   }
 
   @override
@@ -41,8 +35,8 @@ class SigninScreen extends StatelessWidget {
             children: [
               const SizedBox(),
               PageTitle(
-                title: TEXT.signinTitle,
-                subTitle: TEXT.signinSubTitle,
+                title: TEXT.resetPassword,
+                subTitle: TEXT.enterEmail,
               ),
               Container(
                 margin: const EdgeInsets.all(10.0),
@@ -60,40 +54,17 @@ class SigninScreen extends StatelessWidget {
                       controller: _email,
                       padding: const EdgeInsets.all(10),
                     ),
-                    CustomTextField(
-                      isPassword: true,
-                      hintText: TEXT.password.tr,
-                      keyboardType: TextInputType.visiblePassword,
-                      validator: Validator.validatePassword,
-                      controller: _password,
-                      padding: const EdgeInsets.all(10),
-                    ),
                     Obx(
                       () => CustomButton(
                           isLoading: _.isLoading.value,
-                          onPressed: login,
+                          onPressed: resetPass,
                           color: AppColors.primaryColor,
                           elevation: 0,
                           progressColor: Colors.white,
-                          child: CustomText(TEXT.login.tr,
+                          child: CustomText(TEXT.reset,
                               color: Colors.white,
                               fontWeight: FontWeight.bold)),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomText(
-                          TEXT.forgotPassword,
-                          color: Colors.grey,
-                          fontSize: 12,
-                        ),
-                        TextButton(
-                            onPressed: forgotPassword,
-                            child: CustomText(
-                              TEXT.reset,
-                            )),
-                      ],
-                    )
                   ],
                 ),
               ),

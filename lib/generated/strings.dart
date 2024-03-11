@@ -7,11 +7,13 @@ class Strings {
   static const String defaultFont = 'ReadexPro';
 
   /// API URl
-  static const String baseUrl = 'http://192.168.55.252:8000';
+  static const String baseUrl = 'http://192.168.0.103:8000';
   static const String signIn = '/api/v1/auth/signIn';
   static const String signUp = '/api/v1/auth/signUp';
   static const String continueWithGoogle = '/api/v1/auth/googleSignIn';
-  static const String resetPassword = '/api/v1/auth/resetPassword';
+  static const String resetPass = '/api/v1/auth/resetPass';
+  static const String updatePass = '/api/v1/auth/updatePass';
+  
 
   /// LocalStorageKey
   static const String profile = 'profile';

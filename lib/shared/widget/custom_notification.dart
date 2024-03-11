@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -27,8 +26,9 @@ class CustomNotification {
       borderRadius: 4.0,
       snackPosition: SnackPosition.TOP,
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 16),
+
       ///TODO:: Test Delay Duration
-      duration: const Duration(minutes: 10),
+      duration: const Duration(minutes: 5),
     );
   }
 }

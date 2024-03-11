@@ -7,7 +7,7 @@ abstract class AppRoutes {
   static const auth = '/auth';
   static const signin = '/signin';
   static const signup = '/signup';
-  static const createHive = '/createHive';
+  static const resetPass = '/resetPass';
   static const settings = '/settings';
   static const setupProfile = '/setupProfile';
   static const profile = '/profile';

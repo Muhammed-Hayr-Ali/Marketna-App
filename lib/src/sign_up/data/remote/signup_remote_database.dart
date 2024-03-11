@@ -31,10 +31,8 @@ class SignupRemoteDatabaseImpl implements SignupRemoteDatabase {
       "email": profile['email'],
       "password": profile['password'],
       "phoneNumber": profile['phoneNumber'],
-      "role_id": profile['role_id'] ?? 3,
       "gender": profile['gender'] ?? 'Unspecified',
       "dateBirth": profile['dateBirth'],
-      "status": profile['status'],
     });
 
 

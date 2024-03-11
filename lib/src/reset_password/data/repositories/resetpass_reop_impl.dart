@@ -7,14 +7,14 @@ import 'package:marketna_app/src/reset_password/data/remot/reset_password_remote
 import 'package:marketna_app/src/reset_password/domain/repositories/reset_password_repo.dart';
 
 class ResetPasswordRepoImpl implements ResetPasswordRepo {
-  final ResetPasRemoteDatabase resetPasRemoteDatabase;
+  final ResetPasRemoteDatabase remoteDatabase;
 
-  ResetPasswordRepoImpl({required this.resetPasRemoteDatabase});
+  ResetPasswordRepoImpl({required this.remoteDatabase});
   @override
   Future<ApiResult> resetPassowrd({required String email}) async{
     ApiResult apiResult;
     try {
-      final response = await resetPasRemoteDatabase.resetpassword(email: email);
+      final response = await remoteDatabase.resetpassword(email: email);
       if(response.statusCode == 200){
         apiResult = ApiResult.success(
           status: true,
