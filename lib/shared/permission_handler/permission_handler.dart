@@ -53,7 +53,7 @@ class PerHandler {
     } else if (status.isPermanentlyDenied) {
       CustomNotification.showSnackbar(
           message:
-              'Permission to access notification has been permanently denied. You can grant permission through settings');
+              'Permission to access location has been permanently denied. You can grant permission through settings');
       return false;
     }
 

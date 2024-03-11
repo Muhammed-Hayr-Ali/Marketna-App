@@ -64,7 +64,9 @@ class _CustomDropdownState extends State<CustomDropdown> {
                       style: TextStyle(
                           fontFamily: Strings.defaultFont,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.grayColor),
+                          color: e == widget.value
+                              ? Colors.grey.shade400
+                              : AppColors.grayColor),
                     ),
                   ))
               .toList(),
@@ -75,8 +77,6 @@ class _CustomDropdownState extends State<CustomDropdown> {
           style: const TextStyle(color: Colors.black),
           dropdownColor: Colors.grey.shade100,
           borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.0),
-          iconEnabledColor: Colors.grey.shade700,
-          iconDisabledColor: Colors.grey.shade700,
           iconSize: 30.0,
           elevation: 16,
           alignment: Alignment.centerRight,

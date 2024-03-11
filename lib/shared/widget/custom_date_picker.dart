@@ -33,13 +33,11 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
 
   Future<void> _selectDate() async {
     final picked = await showDatePicker(
-      switchToCalendarEntryModeIcon: const Icon(Icons.calendar_today_outlined),
       context: context,
       initialDate: DateTime(2000),
       firstDate: DateTime(1924),
       lastDate: DateTime.now(),
       initialDatePickerMode: DatePickerMode.day,
-      // locale: const Locale('ar', 'S'),
       initialEntryMode: DatePickerEntryMode.calendar,
       helpText: 'Select a date'.tr,
       cancelText: 'Cancel'.tr,
@@ -84,7 +82,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.0),
-            color: widget.backgrond ?? Colors.grey.shade200),
+            color: widget.backgrond ?? Colors.grey.shade100),
         child: Row(
           children: [
             Expanded(
@@ -93,9 +91,10 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                       dateTime ?? '',
                       style: const TextStyle(fontSize: 18),
                     )
-                  : const Text(
+                  : Text(
                       '1986-08-11',
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
+                      style:
+                          TextStyle(fontSize: 18, color: Colors.grey.shade400),
                     ),
             ),
             SizedBox(

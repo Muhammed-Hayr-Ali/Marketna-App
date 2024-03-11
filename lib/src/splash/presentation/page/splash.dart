@@ -10,6 +10,7 @@ class SplashScreen extends StatelessWidget {
   final SplashController _ = Get.find<SplashController>();
 
   void retry() {
+    if (_.isLoading.value) return;
     _.retry();
   }
 

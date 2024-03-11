@@ -3,28 +3,30 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:marketna_app/shared/widget/custom_bottom_sheet.dart';
 import 'package:marketna_app/shared/widget/custom_list_item.dart';
-import 'package:marketna_app/shared/widget/permission_handler.dart';
+import 'package:marketna_app/shared/permission_handler/permission_handler.dart';
 
 class ImageService {
-
+ImageService._();
   static Future<ImageSource?> selectImageSource(
       {Widget? camera, Widget? gallery, required bool accessCamera, required bool accessStorage }) async {
     ImageSource? imageSource;
-
     await custombottomSheet(
-        title: 'Select Image',
         child: Column(
           children: [
             SizedBox(
-              child: accessCamera? CustomListItem(
-                child: SizedBox(
-                    height: 48,
-                    width: 48,
-                    child: camera ?? const Icon(Icons.camera_alt_outlined)),
-                onTap: () => Get.back(result: ImageSource.camera),
+              child: accessCamera? Column(
+                children: [
+                  CustomListItem(
+                    child: SizedBox(
+                        height: 48,
+                        width: 48,
+                        child: camera ?? const Icon(Icons.camera_alt_outlined)),
+                    onTap: () => Get.back(result: ImageSource.camera),
+                  ),
+            const Divider(),
+                ],
               ):null,
             ),
-            const Divider(),
             SizedBox(
               child: accessStorage ? CustomListItem(
                 child: SizedBox(

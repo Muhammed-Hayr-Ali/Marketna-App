@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:marketna_app/routes/app_pages.dart';
 import 'package:marketna_app/shared/provider/api_result/api_result.dart';
 import 'package:marketna_app/src/splash/domain/repositories/splash_repo.dart';
+import 'package:marketna_app/shared/widget/custom_notification.dart';
 
 class SplashController extends GetxController {
   final SplashRepo splashRepo;
@@ -14,15 +15,17 @@ class SplashController extends GetxController {
     ApiResult result = await splashRepo.checkExistsToken();
     result.when(
       success: (bool status, String message, dynamic data, dynamic value) {
+        ///TODO:: Check data
         /// to Home Screen
-        Get.offAllNamed(AppRoutes.home);
+        // Get.offAllNamed(AppRoutes.home);
+        CustomNotification.showSnackbar(message: message);
+        Get.offAllNamed(AppRoutes.auth);
       },
       errors: (bool status, String message) {
         /// to Login Screen
         Future.delayed(const Duration(seconds: 2), () {
           Get.offAllNamed(AppRoutes.auth);
         });
-        
       },
       failure: (bool status, String message) {
         hasError.value = true;

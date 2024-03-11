@@ -36,4 +36,9 @@ class Assets {
   ///Icon
   static const String googleLogo = 'assets/icons/googleLogo.svg';
   static const String email = 'assets/icons/email.svg';
+
+  ///Svg
+  static const String camera = 'assets/svg/camera.svg';
+  static const String gallery = 'assets/svg/gallery.svg';
+  static const String user = 'assets/svg/user.svg';
 }

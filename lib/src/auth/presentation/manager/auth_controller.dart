@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:marketna_app/routes/app_pages.dart';
 import 'package:marketna_app/shared/provider/api_result/api_result.dart';
+import 'package:marketna_app/shared/widget/custom_notification.dart';
 import 'package:marketna_app/src/auth/domain/repositories/auth_repo.dart';
 
 class AuthController extends GetxController {
@@ -17,9 +18,9 @@ class AuthController extends GetxController {
     apiResult.when(success: (status, message, data, v) {
       Get.offAllNamed(AppRoutes.home);
     }, errors: (status, message) {
-      Get.snackbar('Error', message);
+      CustomNotification.showSnackbar(message: message);
     }, failure: (status, message) {
-      Get.snackbar('Error', message);
+      CustomNotification.showSnackbar(message: message);
     });
     isLoading.value = false;
   }

@@ -18,6 +18,13 @@ class SignupRemoteDatabaseImpl implements SignupRemoteDatabase {
 
   @override
   Future<Response> signup({required Map<String, dynamic> profile}) async {
+
+    // FormData data = FormData.fromMap(profile);
+    // if (profile['profile'] != '') {
+    //   MultipartFile photo = await MultipartFile.fromFile(profile['profile']!);
+    //   data.files.add(MapEntry('profile', photo));
+    // }
+
     FormData data = FormData.fromMap({
       "profile": profile['profile'] != null ? await MultipartFile.fromFile(profile['profile']) : null,
       "name": profile['name'],
@@ -34,7 +41,7 @@ class SignupRemoteDatabaseImpl implements SignupRemoteDatabase {
     Response response = await dioRequest.request(
         requestMethod: RequestMethod.post(
             requestParameters: RequestParameters(
-      url: Strings.signIn,
+      url: Strings.signUp,
       data: data,
     )));
     return response;
