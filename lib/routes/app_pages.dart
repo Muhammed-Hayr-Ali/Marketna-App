@@ -10,6 +10,8 @@ import 'package:marketna_app/src/sign_up/domain/binding/signup_binding.dart';
 import 'package:marketna_app/src/sign_up/presentation/page/signup.dart';
 import 'package:marketna_app/src/splash/domain/binding/splash_binding.dart';
 import 'package:marketna_app/src/splash/presentation/page/splash.dart';
+import 'package:marketna_app/src/update_pass/domain/binding/update_pass_binding.dart';
+import 'package:marketna_app/src/update_pass/presentation/page/update_pass.dart';
 part './app_routes.dart';
 
 class RouteGet {
@@ -46,6 +48,13 @@ class RouteGet {
       name: AppRoutes.resetPass,
       page: () => ResetPassScreen(),
       binding: ResetPassBinding(),
+    ),
+
+      /// UpdatePassword
+    GetPage(
+      name: AppRoutes.updatePass,
+      page: () => UpdatePassScreen(),
+      binding: UpdatePassBinding(),
     ),
 
     /// Home

@@ -20,6 +20,7 @@ class Localization extends Translations {
           'Continue with Email': 'متابعة باستخدام البريد الالكتروني',
           'Email': 'البريد الالكتروني',
           'Password': 'كلمة المرور',
+          'Confirm Password': 'تاكيد كلمة المرور',
           'Login': 'تسجيل الدخول',
           'Enter your email and password': 'ادخل بريدك الالكتروني وكلمة المرور',
           'Email can\'t be empty': 'يجب عليك كتابة البريد الالكتروني',
@@ -27,6 +28,7 @@ class Localization extends Translations {
           'Password can\'t be empty': 'يجب عليك كتابة كلمة المرور',
           'Password must be at least 6 characters':
               'يجب عليك كتابة كلمة مرور على الاقل 6 حروف',
+          'Password doesn\'t match': 'كلمة المرور غير متطابقة',
           'Don\'t have an account?': 'ليس لديك حساب؟',
           'Sign Up': 'انشاء حساب',
           'Create your account': 'قم بإنشاء حسابك',
@@ -57,6 +59,10 @@ class Localization extends Translations {
           'Reset': 'اعادة تعيين',
           'Reset Password': 'اعادة تعيين كلمة المرور',
           'Enter your email': 'ادخل بريدك الالكتروني',
+          'Update Password': 'تحديث كلمة المرور',
+          'Create New Password': 'إنشاء كلمة مرور جديدة',
+          'Enter reset code sent to your email':
+              'أدخل رمز إعادة الضبط المرسل إلى بريدك الإلكتروني',
         },
         'en_US': {
           'occurred_somewhere.': 'Sorry, a glitch occurred somewhere.',
@@ -74,6 +80,7 @@ class Localization extends Translations {
           'Continue with Email': 'Continue with Email',
           'Email': 'Email',
           'Password': 'Password',
+          'Confirm Password': 'Confirm Password',
           'Login': 'Login',
           'Enter your email and password': 'Enter your email and password',
           'Email can\'t be empty': 'Email can\'t be empty',
@@ -81,6 +88,7 @@ class Localization extends Translations {
           'Password can\'t be empty': 'Password can\'t be empty',
           'Password must be at least 6 characters':
               'Password must be at least 6 characters',
+          'Password doesn\'t match': 'Password doesn\'t match',
           'Don\'t have an account?': 'Don\'t have an account?',
           'Sign Up': 'Sign Up',
           'Create your account': 'Create your account',
@@ -111,6 +119,10 @@ class Localization extends Translations {
           'Reset': 'Reset',
           'Reset Password': 'Reset Password',
           'Enter your email': 'Enter your email',
+          'Update Password': 'Update Password',
+          'Create New Password': 'Create New Password',
+          'Enter reset code sent to your email':
+              'Enter reset code sent to your email',
         },
         'ku': {
           'occurred_somewhere.': 'Bibore, li derekê xeletiyek çêbû.',
@@ -128,12 +140,14 @@ class Localization extends Translations {
           'Continue with Email': 'Email ilanı',
           'Email': 'Email',
           'Password': 'Şîfre',
+          'Confirm Password': 'Şîfre li hev nayê',
           'Login': 'Login',
           'Enter your email and password': 'Email vala nabe',
           'Email can\'t be empty': 'Email vala nabe',
           'Enter a valid email': 'Email vala nabe',
           'Password can\'t be empty': 'Şîfre vala nabe',
           'Password must be at least 6 characters': 'Şîfre vala nabe',
+          'Password doesn\'t match': 'Şîfre li hev nayê',
           'Don\'t have an account?': 'Nîşana têketinê di depoya her çêbû',
           'Sign Up': 'Tomar kirin',
           'Create your account': 'Hesabê xwe çêbikin',
@@ -163,6 +177,10 @@ class Localization extends Translations {
           'Reset': 'Sifre',
           'Reset Password': 'Şîfre vegerîne',
           'Enter your email': 'Emaila xwe binivîse',
+          'Update Password': 'Şîfre nûve bike',
+          'Create New Password': 'Şîfreyek Nû Biafirîne',
+          'Enter reset code sent to your email':
+              'Koda vesazkirinê ku ji e-nameya xwe re hatî şandin binivîse',
         },
         'tr': {
           'occurred_somewhere.':
@@ -181,6 +199,7 @@ class Localization extends Translations {
           'Continue with Email': 'Email ile Devam Et',
           'Email': 'Email',
           'Password': 'Sifre',
+          'Confirm Password': 'Sifre Onayla',
           'Login': 'Giriş yapmak',
           'Enter your email and password': 'Email ve sifrenizi giriniz',
           'Email can\'t be empty': 'E-posta boş olamaz',
@@ -188,6 +207,7 @@ class Localization extends Translations {
           'Password can\'t be empty': 'Sifre boş olamaz',
           'Password must be at least 6 characters':
               'Sifre en az 6 karakter olmali',
+          'Password doesn\'t match': 'Sifreler uyusmuyor',
           'Don\'t have an account?': 'Hesabınız yok mu?',
           'Sign Up': 'Kayıt olmak',
           'Create your account': 'Hesap olusturun',
@@ -217,6 +237,10 @@ class Localization extends Translations {
           'Reset': 'Sifre sıfırlama',
           'Reset Password': 'Şifreyi yenile',
           'Enter your email': 'E-postanızı giriniz',
+          'Update Password': 'Sifreyi guncelle',
+          'Create New Password': 'Yeni sifre olustur',
+          'Enter reset code sent to your email':
+              'E-postanızda gonderilen kodu giriniz',
         },
       };
 }

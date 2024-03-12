@@ -22,22 +22,14 @@ class SigninRepoImpl implements SigninRepo {
       final response =
           await remoteDatabase.signin(email: email, password: password);
 
-      /// 200 status code means the token is valid
-      if (response.statusCode == 200) {
-        apiResult = ApiResult.success(
-          status: true,
-          message: response.data['message'],
-          data: jsonEncode(response.data['data']),
-        );
+      apiResult = ApiResult.success(
+        status: true,
+        message: response.data['message'],
+        data: jsonEncode(response.data['data']),
+      );
 
-        await localDatabase.saveProfile(profile: response.data['data']['user']);
-        await localDatabase.saveToken(token: response.data['data']['token']);
-      } else {
-        apiResult = ApiResult.errors(
-          status: false,
-          message: response.data['message'],
-        );
-      }
+      await localDatabase.saveProfile(profile: response.data['data']['user']);
+      await localDatabase.saveToken(token: response.data['data']['token']);
       return apiResult;
     } on DioException catch (ex) {
       String message = ex.response != null

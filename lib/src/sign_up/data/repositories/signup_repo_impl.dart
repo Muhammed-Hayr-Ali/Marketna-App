@@ -7,7 +7,6 @@ import 'package:marketna_app/src/sign_up/data/local/signup_local_database.dart';
 import 'package:marketna_app/src/sign_up/data/remote/signup_remote_database.dart';
 import 'package:marketna_app/src/sign_up/domain/repositories/signup_repo.dart';
 
-
 class SignupRepoImpl implements SignupRepo {
   final SignupRemoteDatabase remoteDatabase;
   final SignupLocalDatabase localDatabase;
@@ -15,30 +14,20 @@ class SignupRepoImpl implements SignupRepo {
   SignupRepoImpl({required this.remoteDatabase, required this.localDatabase});
 
   @override
-  Future<ApiResult> signup(
-     {required Map<String, dynamic> profile}) async {
+  Future<ApiResult> signup({required Map<String, dynamic> profile}) async {
     ApiResult apiResult;
 
     try {
-      final response =
-          await remoteDatabase.signup(profile: profile);
+      final response = await remoteDatabase.signup(profile: profile);
+      apiResult = ApiResult.success(
+        status: true,
+        message: response.data['message'],
+        data: jsonEncode(response.data['data']),
+      );
 
-      /// 200 status code means the token is valid
-      if (response.statusCode == 200) {
-        apiResult = ApiResult.success(
-          status: true,
-          message: response.data['message'],
-          data: jsonEncode(response.data['data']),
-        );
+      await localDatabase.saveProfile(profile: response.data['data']['user']);
+      await localDatabase.saveToken(token: response.data['data']['token']);
 
-        await localDatabase.saveProfile(profile: response.data['data']['user']);
-        await localDatabase.saveToken(token: response.data['data']['token']);
-      } else {
-        apiResult = ApiResult.errors(
-          status: false,
-          message: response.data['message'],
-        );
-      }
       return apiResult;
     } on DioException catch (ex) {
       String message = ex.response != null

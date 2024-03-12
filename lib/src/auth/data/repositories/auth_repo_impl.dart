@@ -24,13 +24,12 @@ class AuthRepoImpl extends AuthRepo {
           await googleSignIn.getGoogleSignInAccount();
 
       if (data == null) {
-        return apiResult = const ApiResult.errors(
+        return apiResult = const ApiResult.failure(
             status: false, message: 'Unable to connect to Google account');
       }
 
       final reaponse = await remoteDatabase.continueWithGoogle(data: data);
 
-      if (reaponse.statusCode == 200) {
         apiResult = ApiResult.success(
             status: reaponse.data['status'],
             message: reaponse.data['message'],
@@ -38,10 +37,7 @@ class AuthRepoImpl extends AuthRepo {
 
         await localDatabase.saveProfile(profile: reaponse.data['data']['user']);
         await localDatabase.saveToken(token: reaponse.data['data']['token']);
-      } else {
-        apiResult = ApiResult.errors(
-            status: reaponse.data['status'], message: reaponse.data['message']);
-      }
+      
       return apiResult;
 } on DioException catch (ex) {
       String message = ex.response != null

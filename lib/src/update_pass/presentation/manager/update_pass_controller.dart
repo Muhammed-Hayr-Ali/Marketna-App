@@ -7,15 +7,15 @@ import 'package:marketna_app/src/update_pass/domain/repositories/update_pass_rep
 class UpdatePassController extends GetxController {
   final UpdatePassRepo updatePassRepo;
   RxBool isLoading = false.obs;
+  RxBool isObscure = false.obs;
   UpdatePassController({required this.updatePassRepo});
 
   Future<void> updatePassword({required Map<String, dynamic> data}) async {
     isLoading.value = true;
     ApiResult apiResult = await updatePassRepo.updatePassword(data: data);
     apiResult.when(success: (statua, message, data, v) {
-      Get.offAllNamed(AppRoutes.home);
-    }, errors: (statua, message) {
       CustomNotification.showSnackbar(message: message);
+      Get.offNamed(AppRoutes.signin);
     }, failure: (statua, message) {
       CustomNotification.showSnackbar(message: message);
     });

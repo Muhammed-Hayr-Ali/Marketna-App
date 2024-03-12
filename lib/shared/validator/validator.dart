@@ -44,5 +44,22 @@ class Validator {
       return 'Password must be at least 6 characters'.tr;
     }
     return null;
+  } 
+  
+  
+   static String? validateconfirmPassword(String? value, String? pass) {
+    if (value == null || value.isEmpty) {
+      return 'Password can\'t be empty'.tr;
+    }
+    if (value.length < 6) {
+      return 'Password must be at least 6 characters'.tr;
+    }
+    if(value != pass){
+      return 'Password doesn\'t match'.tr;
+    }
+    return null;
   }
+
+
+  
 }

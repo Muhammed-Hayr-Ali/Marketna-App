@@ -11,11 +11,6 @@ class ApiResult<T> with _$ApiResult<T> {
     T? data2,
   }) = _ApiResultSuccess<T>;
 
-  const factory ApiResult.errors({
-    required bool status,
-    required String message,
-  }) = _ApiResultErrors<T>;
-
   const factory ApiResult.failure({
     required bool status,
     required String message,

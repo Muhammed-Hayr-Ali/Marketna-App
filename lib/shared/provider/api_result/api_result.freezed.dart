@@ -22,21 +22,18 @@ mixin _$ApiResult<T> {
   TResult when<TResult extends Object?>({
     required TResult Function(bool status, String message, T data, T? data2)
         success,
-    required TResult Function(bool status, String message) errors,
     required TResult Function(bool status, String message) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool status, String message, T data, T? data2)? success,
-    TResult? Function(bool status, String message)? errors,
     TResult? Function(bool status, String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool status, String message, T data, T? data2)? success,
-    TResult Function(bool status, String message)? errors,
     TResult Function(bool status, String message)? failure,
     required TResult orElse(),
   }) =>
@@ -44,21 +41,18 @@ mixin _$ApiResult<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ApiResultSuccess<T> value) success,
-    required TResult Function(_ApiResultErrors<T> value) errors,
     required TResult Function(_ApiResultFailure<T> value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ApiResultSuccess<T> value)? success,
-    TResult? Function(_ApiResultErrors<T> value)? errors,
     TResult? Function(_ApiResultFailure<T> value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ApiResultSuccess<T> value)? success,
-    TResult Function(_ApiResultErrors<T> value)? errors,
     TResult Function(_ApiResultFailure<T> value)? failure,
     required TResult orElse(),
   }) =>
@@ -209,7 +203,6 @@ class _$ApiResultSuccessImpl<T> implements _ApiResultSuccess<T> {
   TResult when<TResult extends Object?>({
     required TResult Function(bool status, String message, T data, T? data2)
         success,
-    required TResult Function(bool status, String message) errors,
     required TResult Function(bool status, String message) failure,
   }) {
     return success(status, message, data, data2);
@@ -219,7 +212,6 @@ class _$ApiResultSuccessImpl<T> implements _ApiResultSuccess<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool status, String message, T data, T? data2)? success,
-    TResult? Function(bool status, String message)? errors,
     TResult? Function(bool status, String message)? failure,
   }) {
     return success?.call(status, message, data, data2);
@@ -229,7 +221,6 @@ class _$ApiResultSuccessImpl<T> implements _ApiResultSuccess<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool status, String message, T data, T? data2)? success,
-    TResult Function(bool status, String message)? errors,
     TResult Function(bool status, String message)? failure,
     required TResult orElse(),
   }) {
@@ -243,7 +234,6 @@ class _$ApiResultSuccessImpl<T> implements _ApiResultSuccess<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ApiResultSuccess<T> value) success,
-    required TResult Function(_ApiResultErrors<T> value) errors,
     required TResult Function(_ApiResultFailure<T> value) failure,
   }) {
     return success(this);
@@ -253,7 +243,6 @@ class _$ApiResultSuccessImpl<T> implements _ApiResultSuccess<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ApiResultSuccess<T> value)? success,
-    TResult? Function(_ApiResultErrors<T> value)? errors,
     TResult? Function(_ApiResultFailure<T> value)? failure,
   }) {
     return success?.call(this);
@@ -263,7 +252,6 @@ class _$ApiResultSuccessImpl<T> implements _ApiResultSuccess<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ApiResultSuccess<T> value)? success,
-    TResult Function(_ApiResultErrors<T> value)? errors,
     TResult Function(_ApiResultFailure<T> value)? failure,
     required TResult orElse(),
   }) {
@@ -290,163 +278,6 @@ abstract class _ApiResultSuccess<T> implements ApiResult<T> {
   @override
   @JsonKey(ignore: true)
   _$$ApiResultSuccessImplCopyWith<T, _$ApiResultSuccessImpl<T>> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ApiResultErrorsImplCopyWith<T, $Res>
-    implements $ApiResultCopyWith<T, $Res> {
-  factory _$$ApiResultErrorsImplCopyWith(_$ApiResultErrorsImpl<T> value,
-          $Res Function(_$ApiResultErrorsImpl<T>) then) =
-      __$$ApiResultErrorsImplCopyWithImpl<T, $Res>;
-  @override
-  @useResult
-  $Res call({bool status, String message});
-}
-
-/// @nodoc
-class __$$ApiResultErrorsImplCopyWithImpl<T, $Res>
-    extends _$ApiResultCopyWithImpl<T, $Res, _$ApiResultErrorsImpl<T>>
-    implements _$$ApiResultErrorsImplCopyWith<T, $Res> {
-  __$$ApiResultErrorsImplCopyWithImpl(_$ApiResultErrorsImpl<T> _value,
-      $Res Function(_$ApiResultErrorsImpl<T>) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? message = null,
-  }) {
-    return _then(_$ApiResultErrorsImpl<T>(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as bool,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ApiResultErrorsImpl<T> implements _ApiResultErrors<T> {
-  const _$ApiResultErrorsImpl({required this.status, required this.message});
-
-  @override
-  final bool status;
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'ApiResult<$T>.errors(status: $status, message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ApiResultErrorsImpl<T> &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, status, message);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ApiResultErrorsImplCopyWith<T, _$ApiResultErrorsImpl<T>> get copyWith =>
-      __$$ApiResultErrorsImplCopyWithImpl<T, _$ApiResultErrorsImpl<T>>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(bool status, String message, T data, T? data2)
-        success,
-    required TResult Function(bool status, String message) errors,
-    required TResult Function(bool status, String message) failure,
-  }) {
-    return errors(status, message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool status, String message, T data, T? data2)? success,
-    TResult? Function(bool status, String message)? errors,
-    TResult? Function(bool status, String message)? failure,
-  }) {
-    return errors?.call(status, message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool status, String message, T data, T? data2)? success,
-    TResult Function(bool status, String message)? errors,
-    TResult Function(bool status, String message)? failure,
-    required TResult orElse(),
-  }) {
-    if (errors != null) {
-      return errors(status, message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ApiResultSuccess<T> value) success,
-    required TResult Function(_ApiResultErrors<T> value) errors,
-    required TResult Function(_ApiResultFailure<T> value) failure,
-  }) {
-    return errors(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ApiResultSuccess<T> value)? success,
-    TResult? Function(_ApiResultErrors<T> value)? errors,
-    TResult? Function(_ApiResultFailure<T> value)? failure,
-  }) {
-    return errors?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ApiResultSuccess<T> value)? success,
-    TResult Function(_ApiResultErrors<T> value)? errors,
-    TResult Function(_ApiResultFailure<T> value)? failure,
-    required TResult orElse(),
-  }) {
-    if (errors != null) {
-      return errors(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ApiResultErrors<T> implements ApiResult<T> {
-  const factory _ApiResultErrors(
-      {required final bool status,
-      required final String message}) = _$ApiResultErrorsImpl<T>;
-
-  @override
-  bool get status;
-  @override
-  String get message;
-  @override
-  @JsonKey(ignore: true)
-  _$$ApiResultErrorsImplCopyWith<T, _$ApiResultErrorsImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -527,7 +358,6 @@ class _$ApiResultFailureImpl<T> implements _ApiResultFailure<T> {
   TResult when<TResult extends Object?>({
     required TResult Function(bool status, String message, T data, T? data2)
         success,
-    required TResult Function(bool status, String message) errors,
     required TResult Function(bool status, String message) failure,
   }) {
     return failure(status, message);
@@ -537,7 +367,6 @@ class _$ApiResultFailureImpl<T> implements _ApiResultFailure<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool status, String message, T data, T? data2)? success,
-    TResult? Function(bool status, String message)? errors,
     TResult? Function(bool status, String message)? failure,
   }) {
     return failure?.call(status, message);
@@ -547,7 +376,6 @@ class _$ApiResultFailureImpl<T> implements _ApiResultFailure<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool status, String message, T data, T? data2)? success,
-    TResult Function(bool status, String message)? errors,
     TResult Function(bool status, String message)? failure,
     required TResult orElse(),
   }) {
@@ -561,7 +389,6 @@ class _$ApiResultFailureImpl<T> implements _ApiResultFailure<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ApiResultSuccess<T> value) success,
-    required TResult Function(_ApiResultErrors<T> value) errors,
     required TResult Function(_ApiResultFailure<T> value) failure,
   }) {
     return failure(this);
@@ -571,7 +398,6 @@ class _$ApiResultFailureImpl<T> implements _ApiResultFailure<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ApiResultSuccess<T> value)? success,
-    TResult? Function(_ApiResultErrors<T> value)? errors,
     TResult? Function(_ApiResultFailure<T> value)? failure,
   }) {
     return failure?.call(this);
@@ -581,7 +407,6 @@ class _$ApiResultFailureImpl<T> implements _ApiResultFailure<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ApiResultSuccess<T> value)? success,
-    TResult Function(_ApiResultErrors<T> value)? errors,
     TResult Function(_ApiResultFailure<T> value)? failure,
     required TResult orElse(),
   }) {

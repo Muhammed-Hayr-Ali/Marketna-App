@@ -17,8 +17,6 @@ class AuthController extends GetxController {
 
     apiResult.when(success: (status, message, data, v) {
       Get.offAllNamed(AppRoutes.home);
-    }, errors: (status, message) {
-      CustomNotification.showSnackbar(message: message);
     }, failure: (status, message) {
       CustomNotification.showSnackbar(message: message);
     });

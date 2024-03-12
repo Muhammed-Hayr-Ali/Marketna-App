@@ -19,7 +19,7 @@ class SplashRepoImpl implements SplashRepo {
     try {
       final token = await localDatabase.retrieveToken();
       if (token == '') {
-        apiResult = const ApiResult.errors(
+        apiResult = const ApiResult.failure(
           status: false,
           message: 'No_Token_Found',
         );
@@ -27,25 +27,18 @@ class SplashRepoImpl implements SplashRepo {
       }
       final response = await remoteDatabase.retrieveCurrentUser(token: token);
 
-      /// 200 status code means the token is valid
-      if (response.statusCode == 200) {
-        apiResult = ApiResult.success(
-          status: true,
-          message: response.data['message'],
-          data: jsonEncode(response.data['data']),
-        );
+      apiResult = ApiResult.success(
+        status: true,
+        message: response.data['message'],
+        data: jsonEncode(response.data['data']),
+      );
 
-        await localDatabase.saveCurrentUser(
-          profile: jsonEncode(response.data['data']),
-        );
-      } else {
-        apiResult = ApiResult.errors(
-          status: false,
-          message: response.data['message'],
-        );
-      }
+      await localDatabase.saveCurrentUser(
+        profile: jsonEncode(response.data['data']),
+      );
+
       return apiResult;
-  } on DioException catch (ex) {
+    } on DioException catch (ex) {
       String message = ex.response != null
           ? ex.response!.data['message']
           : DioExceptionHandler.message(ex: ex);

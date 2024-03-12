@@ -8,6 +8,7 @@ abstract class AppRoutes {
   static const signin = '/signin';
   static const signup = '/signup';
   static const resetPass = '/resetPass';
+  static const updatePass = '/updatePass';
   static const settings = '/settings';
   static const setupProfile = '/setupProfile';
   static const profile = '/profile';
