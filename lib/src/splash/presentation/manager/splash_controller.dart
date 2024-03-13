@@ -14,14 +14,17 @@ class SplashController extends GetxController {
     ApiResult result = await splashRepo.checkExistsToken();
     result.when(
       success: (bool status, String message, dynamic data, dynamic value) {
-       Get.offAllNamed(AppRoutes.home);
+        Get.offAllNamed(AppRoutes.auth);
       },
       failure: (bool status, String message) {
-        if (message == 'Bad Response' || message == 'Unauthorized') {
-          Get.offAndToNamed(AppRoutes.auth);
-        } else {
+        if (message == 'Connection error' ||
+            message == 'Connection Timeout' ||
+            message == 'Send Timeout' ||
+            message == 'Receive Timeout') {
           hasError.value = true;
           errorMessage.value = message;
+        } else {
+          Get.offAndToNamed(AppRoutes.auth);
         }
       },
     );

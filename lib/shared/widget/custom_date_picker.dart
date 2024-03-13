@@ -2,6 +2,7 @@ import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marketna_app/generated/app_colors.dart';
+import 'package:marketna_app/shared/widget/custom_text.dart';
 
 class CustomDatePicker extends StatefulWidget {
   final String? labelText;
@@ -12,6 +13,7 @@ class CustomDatePicker extends StatefulWidget {
   final double? height;
   final Color? backgrond;
   final double? borderRadius;
+  final String? hintText;
 
   const CustomDatePicker(
       {super.key,
@@ -22,7 +24,8 @@ class CustomDatePicker extends StatefulWidget {
       this.width,
       this.height,
       this.backgrond,
-      this.borderRadius});
+      this.borderRadius,
+      this.hintText});
 
   @override
   State<CustomDatePicker> createState() => _CustomDatePickerState();
@@ -85,6 +88,12 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
             color: widget.backgrond ?? Colors.grey.shade100),
         child: Row(
           children: [
+            CustomText(
+              widget.hintText ?? '',
+              color: Colors.grey.shade400,
+              fontWeight: FontWeight.bold,
+            ),
+            SizedBox(width: widget.hintText == null ? 0 : 10.0),
             Expanded(
               child: dateTime != null
                   ? Text(

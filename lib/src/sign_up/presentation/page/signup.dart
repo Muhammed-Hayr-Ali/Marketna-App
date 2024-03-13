@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:marketna_app/generated/app_colors.dart';
 import 'package:marketna_app/generated/assets.dart';
 import 'package:marketna_app/generated/text.dart';
+import 'package:marketna_app/shared/confetti_animation/confetti_animation.dart';
+import 'package:marketna_app/shared/loading_animation/loading_animation.dart';
 import 'package:marketna_app/shared/validator/validator.dart';
 import 'package:marketna_app/shared/widget/custom_avatar.dart';
 import 'package:marketna_app/shared/widget/custom_button.dart';
@@ -28,7 +30,6 @@ class SignupScreen extends StatelessWidget {
   final _gender = TextEditingController(text: TEXT.unspecified);
 
   Future<void> login() async {
-  
     if (_.isLoading.value) return;
 
     _.invaldPath.value = _.path.value == '' ? true : false;
@@ -64,90 +65,98 @@ class SignupScreen extends StatelessWidget {
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Stack(
+              alignment: Alignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: PageTitle(
-                    title: TEXT.signUp,
-                    subTitle: TEXT.createYourAccount,
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(10.0),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white),
-                  child: Column(
-                    children: [
-                      Inkk(
-                        radius: 999,
-                        onTap: selectImage,
-                        child: Obx(
-                          () => CustomAvatar(
-                            borderColor: _.invaldPath.value
-                                ? Colors.red
-                                : Colors.transparent,
-                            borderWidth: _.invaldPath.value ? 1 : 0,
-                            sourceImage: SourceImage.localImage,
-                            path: _.path.value,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: PageTitle(
+                        title: TEXT.signUp,
+                        subTitle: TEXT.createYourAccount,
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 20),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white),
+                      child: Column(
+                        children: [
+                          Inkk(
+                            radius: 999,
+                            onTap: selectImage,
+                            child: Obx(
+                              () => CustomAvatar(
+                                borderColor: _.invaldPath.value
+                                    ? Colors.red
+                                    : Colors.transparent,
+                                borderWidth: _.invaldPath.value ? 1 : 0,
+                                sourceImage: SourceImage.localImage,
+                                path: _.path.value,
+                              ),
+                            ),
                           ),
-                        ),
+                          CustomTextField(
+                            hintText: TEXT.name.tr,
+                            keyboardType: TextInputType.name,
+                            validator: Validator.validateName,
+                            controller: _name,
+                            padding: const EdgeInsets.all(10),
+                          ),
+                          CustomTextField(
+                            hintText: TEXT.email.tr,
+                            keyboardType: TextInputType.emailAddress,
+                            validator: Validator.validateEmail,
+                            controller: _email,
+                            padding: const EdgeInsets.all(10),
+                          ),
+                          CustomTextField(
+                            isPassword: true,
+                            hintText: TEXT.password.tr,
+                            keyboardType: TextInputType.visiblePassword,
+                            validator: Validator.validatePassword,
+                            controller: _password,
+                            padding: const EdgeInsets.all(10),
+                          ),
+                          CustomTextField(
+                            hintText: TEXT.phoneNumber.tr,
+                            keyboardType: TextInputType.phone,
+                            validator: Validator.validatePhoneNumber,
+                            controller: _phoneNumber,
+                            padding: const EdgeInsets.all(10),
+                          ),
+                          CustomDatePicker(
+                              hintText: TEXT.dateBirth, controller: _dateBirth),
+                          CustomDropdown(
+                            hintText: TEXT.gender,
+                            items: [TEXT.unspecified, TEXT.mail, TEXT.female],
+                            value: TEXT.unspecified,
+                            controller: _gender,
+                          ),
+                          CustomButton(
+                            isLoading: false,
+                            onPressed: login,
+                            color: AppColors.primaryColor,
+                            elevation: 0,
+                            progressColor: Colors.white,
+                            child: Text(TEXT.login.tr,
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                        ],
                       ),
-                      CustomTextField(
-                        hintText: TEXT.name.tr,
-                        keyboardType: TextInputType.name,
-                        validator: Validator.validateName,
-                        controller: _name,
-                        padding: const EdgeInsets.all(10),
-                      ),
-                      CustomTextField(
-                        hintText: TEXT.email.tr,
-                        keyboardType: TextInputType.emailAddress,
-                        validator: Validator.validateEmail,
-                        controller: _email,
-                        padding: const EdgeInsets.all(10),
-                      ),
-                      CustomTextField(
-                        isPassword: true,
-                        hintText: TEXT.password.tr,
-                        keyboardType: TextInputType.visiblePassword,
-                        validator: Validator.validatePassword,
-                        controller: _password,
-                        padding: const EdgeInsets.all(10),
-                      ),
-                      CustomTextField(
-                        hintText: TEXT.phoneNumber.tr,
-                        keyboardType: TextInputType.phone,
-                        validator: Validator.validatePhoneNumber,
-                        controller: _phoneNumber,
-                        padding: const EdgeInsets.all(10),
-                      ),
-                      CustomDatePicker(controller: _dateBirth),
-                      CustomDropdown(
-                        items: [TEXT.unspecified, TEXT.mail, TEXT.female],
-                        value: TEXT.unspecified,
-                        controller: _gender,
-                      ),
-                      Obx(
-                        () => CustomButton(
-                          isLoading: _.isLoading.value,
-                          onPressed: login,
-                          color: AppColors.primaryColor,
-                          elevation: 0,
-                          progressColor: Colors.white,
-                          child: Text(TEXT.login.tr,
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
+                Obx(() => _.isLoading.value ? LoadingAnimation() : Container()),
+                Obx(() =>
+                    _.isConfett.value ? ConfettiAnimation() : Container()),
               ],
             ),
           ),

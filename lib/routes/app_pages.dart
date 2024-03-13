@@ -50,7 +50,7 @@ class RouteGet {
       binding: ResetPassBinding(),
     ),
 
-      /// UpdatePassword
+    /// UpdatePassword
     GetPage(
       name: AppRoutes.updatePass,
       page: () => UpdatePassScreen(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:marketna_app/generated/app_colors.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -16,6 +17,7 @@ class CustomTextField extends StatefulWidget {
   final bool? isLtrOnly;
   final double borderRadius;
   final EdgeInsetsGeometry? padding;
+  final void Function()? onTap;
 
   const CustomTextField(
       {super.key,
@@ -32,7 +34,8 @@ class CustomTextField extends StatefulWidget {
       this.isLtrOnly = false,
       this.enabledSuffix = true,
       this.borderRadius = 10,
-      this.padding});
+      this.padding,
+      this.onTap});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -56,6 +59,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Padding(
       padding: widget.padding ?? const EdgeInsets.all(8.0),
       child: TextFormField(
+        onTap: widget.onTap,
         textDirection: widget.isLtrOnly == true ? TextDirection.ltr : null,
         cursorColor: AppColors.primaryColor,
         enabled: widget.enabled,
@@ -71,7 +75,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
         decoration: InputDecoration(
           prefix: widget.prefix,
           hintText: widget.hintText,
-          
           suffix: widget.suffix
               ? GestureDetector(
                   onTap: widget.isPassword ? updatevisiblity : clear,
@@ -90,10 +93,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           : null,
                 )
               : null,
-
         ),
       ),
     );
   }
 }
-

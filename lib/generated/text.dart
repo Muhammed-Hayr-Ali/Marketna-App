@@ -13,6 +13,7 @@ class TEXT {
   static String phoneNumber = 'Phone Number';
   static String login = 'Login';
   static String createYourAccount = 'Create your account';
+  static String gender = 'Gender';
   static String unspecified = 'Unspecified';
   static String mail = 'Male';
   static String female = 'Female';
@@ -23,4 +24,5 @@ class TEXT {
   static String updatePassword = 'Update Password';
   static String createNewPassword = 'Create New Password';
   static String enterResetCode = 'Enter reset code sent to your email';
+  static String dateBirth = 'Date Birth';
 }

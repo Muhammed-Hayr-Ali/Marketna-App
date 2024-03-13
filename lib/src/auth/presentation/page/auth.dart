@@ -26,7 +26,7 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,8 +38,13 @@ class AuthScreen extends StatelessWidget {
               margin: const EdgeInsets.all(10.0),
               padding:
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10), color: Colors.white),
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.shade200,
+                    blurRadius: 4,
+                    //offset: const Offset(0, 5),
+                    spreadRadius: 0)
+              ], borderRadius: BorderRadius.circular(10), color: Colors.white),
               child: Column(children: [
                 Obx(
                   () => CustomButton(

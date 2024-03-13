@@ -41,4 +41,9 @@ class Assets {
   static const String camera = 'assets/svg/camera.svg';
   static const String gallery = 'assets/svg/gallery.svg';
   static const String user = 'assets/svg/user.svg';
+
+  ///rive
+  static const String riveConfetti = 'assets/riv/confetti.riv';
+  static const String riveLoginCharacter = 'assets/riv/login_character.riv';
+  static const String riveloading = 'assets/riv/loading.riv';
 }

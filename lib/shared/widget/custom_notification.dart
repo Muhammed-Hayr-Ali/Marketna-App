@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:marketna_app/translations/translation.dart';
 
 class CustomNotification {
   CustomNotification._();
@@ -26,7 +27,7 @@ class CustomNotification {
       borderRadius: 4.0,
       snackPosition: SnackPosition.TOP,
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 16),
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 4),
     );
   }
 }
