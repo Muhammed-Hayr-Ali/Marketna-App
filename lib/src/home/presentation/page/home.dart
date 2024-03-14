@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:marketna_app/src/home/presentation/manager/home_controller.dart';
+import 'package:marketna_app/src/home/presentation/widgets/carousel.dart';
+import 'package:marketna_app/src/home/presentation/widgets/category_widget.dart';
+import 'package:marketna_app/src/home/presentation/widgets/products_list.dart';
 
 class HomeScreen extends StatelessWidget {
-   HomeScreen({super.key});
-final HomeScreenController _ = Get.find<HomeScreenController>();
+  const HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: SizedBox(child: Obx(()=> Text(_.catygoryList.length.toString())),),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CarouselWidget(),
+            const SizedBox(height: 20),
+            Category(),
+            const SizedBox(height: 20),
+            ProductsList(),
+          ],
+        ),
+      ),
     );
   }
 }

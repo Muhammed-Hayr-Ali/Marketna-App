@@ -25,4 +25,8 @@ class TEXT {
   static String createNewPassword = 'Create New Password';
   static String enterResetCode = 'Enter reset code sent to your email';
   static String dateBirth = 'Date Birth';
+  static String imageNotFound = 'Image Not Found';
+  static String seeAll = 'See All';
+  static String noData = 'No Data Found';
+  static String categories = 'Categories';
 }

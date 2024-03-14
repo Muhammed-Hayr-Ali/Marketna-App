@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:marketna_app/shared/provider/api_result/api_result.dart';
 import 'package:marketna_app/shared/widget/custom_notification.dart';
@@ -17,9 +15,9 @@ class HomeScreenController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-   // getPremiumProduct();
-  //   getAllProduct();
-   getCategory();
+    getPremiumProduct();
+    getCategory();
+    // getAllProduct();
   }
 
   Future<void> getPremiumProduct() async {
