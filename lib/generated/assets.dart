@@ -2,6 +2,9 @@ class Assets {
   Assets._();
   static const String svgLogo = 'assets/svg/logo.svg';
 
+
+
+  ///Navbar
   static const String homeIcon = 'assets/bottomNavbar/homeIcon.svg';
   static const String homeActive = 'assets/bottomNavbar/homeActive.svg';
 
@@ -30,8 +33,6 @@ class Assets {
   ///GIF
   static const String login = 'assets/gif/login.gif';
 
-  ///Image
-  static const String signin = 'assets/images/signin.png';
 
   ///Icon
   static const String googleLogo = 'assets/icons/googleLogo.svg';
@@ -41,6 +42,7 @@ class Assets {
   static const String camera = 'assets/svg/camera.svg';
   static const String gallery = 'assets/svg/gallery.svg';
   static const String user = 'assets/svg/user.svg';
+  static const String svgPassword = 'assets/svg/password.svg';
 
   ///rive
   static const String riveConfetti = 'assets/riv/confetti.riv';

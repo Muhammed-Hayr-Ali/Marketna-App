@@ -5,8 +5,10 @@ import 'package:marketna_app/src/splash/presentation/manager/splash_controller.d
 
 class SplashBinding extends Bindings {
   SplashService splashService = SplashService();
+
   @override
   void dependencies() async {
+
     splashService.dependencies();
     Get.lazyPut<SplashController>(
         () => SplashController(splashRepo: Get.find<SplashRepo>()));

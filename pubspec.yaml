@@ -14,6 +14,7 @@ dependencies:
   dio: ^5.4.1
   flutter:
     sdk: flutter
+  flutter_keyboard_visibility: ^6.0.0
   flutter_otp_text_field: ^1.1.1
   flutter_svg: ^2.0.10+1
   fluttertoast: ^8.2.4

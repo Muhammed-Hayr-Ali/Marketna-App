@@ -61,6 +61,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
           children: [
             CustomText(
               widget.hintText ?? '',
+              fontSize: 12,
               color: Colors.grey.shade400,
               fontWeight: FontWeight.bold,
             ),
@@ -75,6 +76,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
                             e.tr,
                             style: TextStyle(
                                 fontFamily: Strings.defaultFont,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold,
                                 color: e == widget.value
                                     ? Colors.grey.shade400

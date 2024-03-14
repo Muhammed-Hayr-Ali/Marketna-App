@@ -9,6 +9,7 @@ import 'package:marketna_app/shared/validator/validator.dart';
 import 'package:marketna_app/shared/widget/custom_button.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 import 'package:marketna_app/shared/widget/custom_text_field.dart';
+import 'package:marketna_app/shared/widget/title_page.dart';
 import 'package:marketna_app/src/sign_in/presentation/manager/signin_controller.dart';
 
 class SigninScreen extends StatelessWidget {
@@ -41,25 +42,27 @@ class SigninScreen extends StatelessWidget {
           key: _formKey,
           child: SingleChildScrollView(
             child: SizedBox(
-              height: Get.height - 10,
+              height: Get.height - 35,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  Expanded(
+                    child: PageTitle(
+                      title: TEXT.signinTitle,
+                      subTitle: TEXT.signinSubTitle,
+                    ),
+                  ),
                   LoginAnimation(),
-                  // PageTitle(
-                  //   title: TEXT.signinTitle,
-                  //   subTitle: TEXT.signinSubTitle,
-                  // ),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 8.0, vertical: 20),
+                    margin: const EdgeInsets.fromLTRB(10.0, 0, 10, 10),
+                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white),
                     child: Column(
                       children: [
                         CustomTextField(
-                          onTap: controller.lookAround,
+                          onTap: () => controller.lookAround(),
                           hintText: TEXT.email.tr,
                           keyboardType: TextInputType.emailAddress,
                           validator: Validator.validateEmail,
@@ -77,7 +80,8 @@ class SigninScreen extends StatelessWidget {
                           controller: _password,
                           padding: const EdgeInsets.all(10),
                         ),
-                        Obx(()=> CustomButton(
+                        Obx(
+                          () => CustomButton(
                               isLoading: _.isLoading.value,
                               onPressed: login,
                               color: AppColors.primaryColor,
@@ -87,7 +91,7 @@ class SigninScreen extends StatelessWidget {
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold)),
                         ),
-                        Column(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CustomText(

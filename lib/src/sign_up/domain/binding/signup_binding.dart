@@ -8,8 +8,6 @@ class SignupBinding extends Bindings {
 
   @override
   void dependencies() {
-    signupService.dependencies();
-
     Get.lazyPut<SignupController>(
         () => SignupController(signupRepo: Get.find<SignupRepo>()));
   }

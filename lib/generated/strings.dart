@@ -7,7 +7,7 @@ class Strings {
   static const String defaultFont = 'ReadexPro';
 
   /// API URl
-  static const String baseUrl = 'http://192.168.55.252:8000';
+  static const String baseUrl = 'http://192.168.74.175:8000';
   static const String signIn = '/api/v1/auth/signIn';
   static const String signUp = '/api/v1/auth/signUp';
   static const String continueWithGoogle = '/api/v1/auth/googleSignIn';

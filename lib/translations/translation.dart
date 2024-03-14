@@ -63,6 +63,7 @@ class Localization extends Translations {
           'Create New Password': 'إنشاء كلمة مرور جديدة',
           'Enter reset code sent to your email':
               'أدخل رمز إعادة الضبط المرسل إلى بريدك الإلكتروني',
+          'Date Birth': 'تاريخ الولادة',
         },
         'en_US': {
           'occurred_somewhere.': 'Sorry, a glitch occurred somewhere.',
@@ -123,6 +124,7 @@ class Localization extends Translations {
           'Create New Password': 'Create New Password',
           'Enter reset code sent to your email':
               'Enter reset code sent to your email',
+          'Date Birth': 'Date Birth',
         },
         'ku': {
           'occurred_somewhere.': 'Bibore, li derekê xeletiyek çêbû.',
@@ -181,6 +183,7 @@ class Localization extends Translations {
           'Create New Password': 'Şîfreyek Nû Biafirîne',
           'Enter reset code sent to your email':
               'Koda vesazkirinê ku ji e-nameya xwe re hatî şandin binivîse',
+          'Date Birth': 'Dîroka Jidayikbûnê',
         },
         'tr': {
           'occurred_somewhere.':
@@ -241,6 +244,7 @@ class Localization extends Translations {
           'Create New Password': 'Yeni sifre olustur',
           'Enter reset code sent to your email':
               'E-postanızda gonderilen kodu giriniz',
+          'Date Birth': 'Dogum Tarihi',
         },
       };
 }

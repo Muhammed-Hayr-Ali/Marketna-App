@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketna_app/generated/app_colors.dart';
+import 'package:marketna_app/shared/widget/custom_text.dart';
 
 class CustomTextField extends StatefulWidget {
   final bool? enabled;
@@ -17,6 +18,7 @@ class CustomTextField extends StatefulWidget {
   final double borderRadius;
   final EdgeInsetsGeometry? padding;
   final void Function()? onTap;
+  final String? label;
 
   const CustomTextField(
       {super.key,
@@ -34,7 +36,8 @@ class CustomTextField extends StatefulWidget {
       this.enabledSuffix = true,
       this.borderRadius = 10,
       this.padding,
-      this.onTap});
+      this.onTap,
+      this.label});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -57,42 +60,57 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return Padding(
       padding: widget.padding ?? const EdgeInsets.all(8.0),
-      child: TextFormField(
-        onTap: widget.onTap,
-        textDirection: widget.isLtrOnly == true ? TextDirection.ltr : null,
-        cursorColor: AppColors.primaryColor,
-        enabled: widget.enabled,
-        autofocus: widget.autofocus,
-        controller: widget.controller,
-        keyboardType: widget.keyboardType,
-        obscureText: widget.isPassword ? obscureText : false,
-        validator: widget.validator,
-        onChanged: widget.onChanged,
-        cursorHeight: 26,
-        style:
-            TextStyle(color: AppColors.grayColor, fontWeight: FontWeight.bold),
-        decoration: InputDecoration(
-          prefix: widget.prefix,
-          hintText: widget.hintText,
-          suffix: widget.suffix
-              ? GestureDetector(
-                  onTap: widget.isPassword ? updatevisiblity : clear,
-                  child: widget.isPassword
-                      ? Icon(
-                          obscureText ? Icons.visibility : Icons.visibility_off,
-                          size: 16,
-                          color: AppColors.grayColor,
-                        )
-                      : widget.enabledSuffix
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          widget.label == null
+              ? CustomText(
+                  '',
+                  fontSize: 12,
+                  color: AppColors.grayColor,
+                )
+              : const SizedBox.shrink(),
+          SizedBox(height: widget.label != null ? 6 : 0),
+          TextFormField(
+            onTap: widget.onTap,
+            textDirection: widget.isLtrOnly == true ? TextDirection.ltr : null,
+            cursorColor: AppColors.primaryColor,
+            enabled: widget.enabled,
+            autofocus: widget.autofocus,
+            controller: widget.controller,
+            keyboardType: widget.keyboardType,
+            obscureText: widget.isPassword ? obscureText : false,
+            validator: widget.validator,
+            onChanged: widget.onChanged,
+            cursorHeight: 26,
+            style: TextStyle(
+                color: AppColors.grayColor, fontWeight: FontWeight.bold),
+            decoration: InputDecoration(
+              prefix: widget.prefix,
+              hintText: widget.hintText,
+              suffix: widget.suffix
+                  ? GestureDetector(
+                      onTap: widget.isPassword ? updatevisiblity : clear,
+                      child: widget.isPassword
                           ? Icon(
-                              Icons.cancel,
+                              obscureText
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
                               size: 16,
                               color: AppColors.grayColor,
                             )
-                          : null,
-                )
-              : null,
-        ),
+                          : widget.enabledSuffix
+                              ? Icon(
+                                  Icons.cancel,
+                                  size: 16,
+                                  color: AppColors.grayColor,
+                                )
+                              : null,
+                    )
+                  : null,
+            ),
+          ),
+        ],
       ),
     );
   }

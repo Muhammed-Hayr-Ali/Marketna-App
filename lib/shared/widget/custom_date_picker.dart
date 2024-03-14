@@ -90,6 +90,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
           children: [
             CustomText(
               widget.hintText ?? '',
+              fontSize: 12,
               color: Colors.grey.shade400,
               fontWeight: FontWeight.bold,
             ),

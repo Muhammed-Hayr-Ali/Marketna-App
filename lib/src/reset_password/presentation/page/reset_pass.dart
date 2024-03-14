@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marketna_app/generated/app_colors.dart';
 import 'package:marketna_app/generated/text.dart';
-import 'package:marketna_app/shared/confetti_animation/confetti_animation.dart';
-import 'package:marketna_app/shared/loading_animation/loading_animation.dart';
 import 'package:marketna_app/shared/validator/validator.dart';
 import 'package:marketna_app/shared/widget/custom_button.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
@@ -28,14 +26,15 @@ class ResetPassScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: Form(
           key: _formKey,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Column(
+          child: SingleChildScrollView(
+
+            child: SizedBox(
+              height: Get.height -35,
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const SizedBox(),
@@ -45,8 +44,8 @@ class ResetPassScreen extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.all(10.0),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 8.0, vertical: 20),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white),
@@ -59,23 +58,23 @@ class ResetPassScreen extends StatelessWidget {
                           controller: _email,
                           padding: const EdgeInsets.all(10),
                         ),
-                        CustomButton(
-                            isLoading: false,
-                            onPressed: resetPass,
-                            color: AppColors.primaryColor,
-                            elevation: 0,
-                            progressColor: Colors.white,
-                            child: CustomText(TEXT.reset,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
+                        Obx(
+                          () => CustomButton(
+                              isLoading: _.isLoading.value,
+                              onPressed: resetPass,
+                              color: AppColors.primaryColor,
+                              elevation: 0,
+                              progressColor: Colors.white,
+                              child: CustomText(TEXT.reset,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
                       ],
                     ),
                   ),
                 ],
               ),
-              Obx(() => _.isLoading.value ? LoadingAnimation() : Container()),
-              Obx(() => _.isConfett.value ? ConfettiAnimation() : Container()),
-            ],
+            ),
           ),
         ),
       ),

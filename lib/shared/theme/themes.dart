@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:marketna_app/generated/app_colors.dart';
 import 'package:marketna_app/generated/strings.dart';
+import 'package:marketna_app/shared/theme/bottomNavigationBarTheme.dart';
 import 'package:marketna_app/shared/theme/input_decoration_theme.dart';
 
 
@@ -49,6 +50,7 @@ class AppThemeData {
           fontWeight: FontWeight.w300),
     ),
 
-inputDecorationTheme: inputDecorationTheme
+inputDecorationTheme: inputDecorationTheme, 
+bottomNavigationBarTheme: bottomNavigationBarTheme
   );
 }

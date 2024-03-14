@@ -5,11 +5,9 @@ import 'package:marketna_app/src/auth/data/remote/auth_remote_database.dart';
 import 'package:marketna_app/src/auth/data/repositories/auth_repo_impl.dart';
 import 'package:marketna_app/src/auth/domain/repositories/auth_repo.dart';
 
-class AuthService extends Bindings {
+class AuthService extends GetxService {
 
-  
-  @override
-  void dependencies() {
+    Future<AuthService> init() async {
       Get.lazyPut<AuthLocalDatabase>( () => AuthLocalDatabaseImpl());
     Get.lazyPut<AuthRemoteDatabase>( () =>  AuthRemoteDatabaseImpl());
     Get.lazyPut<MyGoogleSignInAccount>(() => MyGoogleSignInAccountImpl());
@@ -19,6 +17,7 @@ class AuthService extends Bindings {
       remoteDatabase: Get.find<AuthRemoteDatabase>(),
       googleSignIn: Get.find<MyGoogleSignInAccount>(),
     ));
+    return this;
 
-  }
+    }
 }

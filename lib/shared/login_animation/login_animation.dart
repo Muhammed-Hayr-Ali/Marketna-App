@@ -14,8 +14,8 @@ class LoginAnimation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => SizedBox(
-        width: Get.width * 0.5,
-        height: 280,
+        width: 300,
+        height: 200,
         child: controller.riveArtboard.value != null
             ? Rive(artboard: controller.riveArtboard.value!)
             : null,

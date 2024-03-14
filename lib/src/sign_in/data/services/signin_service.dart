@@ -4,18 +4,27 @@ import 'package:marketna_app/src/sign_in/data/remote/signin_remote_database.dart
 import 'package:marketna_app/src/sign_in/data/repositories/signin_repo_impl.dart';
 import 'package:marketna_app/src/sign_in/domain/repositories/signin_repo.dart';
 
-class SigninService extends Bindings {
- 
-  
-  @override
-  void dependencies() {
- Get.lazyPut<SigninLocalDatabase>( () => SigninLocalDatabaseImpl());
-    Get.lazyPut<SigninRemoteDatabase>(() =>  SigninRemoteDatabaseImpl());
+class SigninService extends GetxService {
+  Future<SigninService> init() async {
+    Get.lazyPut<SigninLocalDatabase>(() => SigninLocalDatabaseImpl());
+    Get.lazyPut<SigninRemoteDatabase>(() => SigninRemoteDatabaseImpl());
 
-    Get.lazyPut<SigninRepo>(() =>  SigninRepoImpl(
+    Get.lazyPut<SigninRepo>(() => SigninRepoImpl(
         localDatabase: Get.find<SigninLocalDatabase>(),
-        remoteDatabase: Get.find<SigninRemoteDatabase>()));  }
+        remoteDatabase: Get.find<SigninRemoteDatabase>()));
+
+    return this;
+  }
 }
+//   @override
+//   void dependencies() {
+//  Get.lazyPut<SigninLocalDatabase>( () => SigninLocalDatabaseImpl());
+//     Get.lazyPut<SigninRemoteDatabase>(() =>  SigninRemoteDatabaseImpl());
+
+//     Get.lazyPut<SigninRepo>(() =>  SigninRepoImpl(
+//         localDatabase: Get.find<SigninLocalDatabase>(),
+//         remoteDatabase: Get.find<SigninRemoteDatabase>()));  }
+// }
 
 
 
