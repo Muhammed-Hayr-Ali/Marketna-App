@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:marketna_app/src/home/presentation/manager/home_controller.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
+   HomeScreen({super.key});
+final HomeScreenController _ = Get.find<HomeScreenController>();
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SizedBox(),
+    return  Scaffold(
+      body: SizedBox(child: Obx(()=> Text(_.catygoryList.length.toString())),),
     );
   }
 }

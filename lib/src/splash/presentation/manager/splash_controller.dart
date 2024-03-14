@@ -18,10 +18,8 @@ class SplashController extends GetxController {
       success:
           (bool status, String message, dynamic data, dynamic value) async {
         ///TODO: INIT APP SERVICES
-        await appServices();
-        Future.delayed(const Duration(seconds: 3), () {
-          Get.offAllNamed(AppRoutes.bottomNavBar);
-        });
+        await appServices()
+            .whenComplete(() => Get.offAllNamed(AppRoutes.bottomNavBar));
       },
       failure: (bool status, String message) async {
         if (message == 'Connection error' ||
@@ -32,10 +30,8 @@ class SplashController extends GetxController {
           errorMessage.value = message;
         } else {
           ///TODO: INIT AUTH SERVICES
-          await authServices();
-          Future.delayed(const Duration(seconds: 3), () {
-            Get.offAllNamed(AppRoutes.auth);
-          });
+          await authServices()
+              .whenComplete(() => Get.offAllNamed(AppRoutes.auth));
         }
       },
     );
@@ -44,7 +40,7 @@ class SplashController extends GetxController {
 
   @override
   void onInit() {
-    checkExistsToken();
+    Future.delayed(const Duration(milliseconds: 3500), () => checkExistsToken());
     super.onInit();
   }
 
