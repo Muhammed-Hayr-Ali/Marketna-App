@@ -42,65 +42,70 @@ class SigninScreen extends StatelessWidget {
         key: _formKey,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            children: [
-              PageTitle(
-                title: SignInText.title,
-                subTitle: SignInText.subTitle,
-              ),
-              const SizedBox(height: 30),
-              LoginAnimation(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomTextField(
-                    onTap: () => controller.lookAround(),
-                    label: SignInText.email,
-                    hintText: SignInText.example,
-                    keyboardType: TextInputType.emailAddress,
-                    validator: Validator.validateEmail,
-                    controller: _email,
-                    padding: const EdgeInsets.all(10),
-                    onChanged: (value) => controller.moveEyes(value.length),
-                  ),
-                  CustomTextField(
-                    onTap: controller.handsUpOnEyes,
-                    isPassword: true,
-                    label: SignInText.password.tr,
-                    hintText: '*******',
-                    keyboardType: TextInputType.visiblePassword,
-                    validator: Validator.validatePassword,
-                    controller: _password,
-                    padding: const EdgeInsets.all(10),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 8.0, vertical: 16.0),
-                    child: Inkk(
-                      onTap: forgotPassword,
-                      padding: const EdgeInsets.fromLTRB(4, 0, 4, 2),
-                      child: CustomText(
-                        SignInText.forgotPassword,
-                        fontSize: 12,
-                        color: AppColors.primaryColor,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                PageTitle(
+                  title: SignInText.title,
+                  subTitle: SignInText.subTitle,
+                ),
+                const SizedBox(height: 30),
+                Center(child: LoginAnimation()),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomTextField(
+                      onTap: () => controller.lookAround(),
+                      label: SignInText.email,
+                      hintText: SignInText.example,
+                      keyboardType: TextInputType.emailAddress,
+                      validator: Validator.validateEmail,
+                      controller: _email,
+                      padding: const EdgeInsets.all(10),
+                      onChanged: (value) => controller.moveEyes(value.length),
+                    ),
+                    CustomTextField(
+                      onTap: controller.handsUpOnEyes,
+                      isPassword: true,
+                      label: SignInText.password.tr,
+                      hintText: '*******',
+                      keyboardType: TextInputType.visiblePassword,
+                      validator: Validator.validatePassword,
+                      controller: _password,
+                      padding: const EdgeInsets.all(10),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 16.0),
+                      child: Inkk(
+                        onTap: forgotPassword,
+                        padding: const EdgeInsets.fromLTRB(4, 0, 4, 2),
+                        child: CustomText(
+                          SignInText.forgotPassword,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primaryColor,
+                        ),
                       ),
                     ),
-                  ),
-                  Obx(
-                    () => CustomButton(
-                        isLoading: _.isLoading.value,
-                        onPressed: login,
-                        color: AppColors.primaryColor,
-                        elevation: 0,
-                        progressColor: Colors.white,
-                        borderRadius: 100,
-                        child: CustomText(SignInText.signIn,
-                            color: Colors.white, fontWeight: FontWeight.bold)),
-                  ),
-                ],
-              ),
-              const SizedBox()
-            ],
+                    Obx(
+                      () => CustomButton(
+                          isLoading: _.isLoading.value,
+                          onPressed: login,
+                          color: AppColors.primaryColor,
+                          elevation: 0,
+                          progressColor: Colors.white,
+                          borderRadius: 100,
+                          child: CustomText(SignInText.signIn,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    ),
+                  ],
+                ),
+                const SizedBox()
+              ],
+            ),
           ),
         ),
       ),

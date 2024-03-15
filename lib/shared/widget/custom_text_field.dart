@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:marketna_app/generated/app_colors.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 
@@ -87,7 +88,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 color: AppColors.grayColor, fontWeight: FontWeight.bold),
             decoration: InputDecoration(
               prefix: widget.prefix,
-              hintText: widget.hintText,
+              hintText: (widget.hintText ?? '').tr,
               suffix: widget.suffix
                   ? GestureDetector(
                       onTap: widget.isPassword ? updatevisiblity : clear,

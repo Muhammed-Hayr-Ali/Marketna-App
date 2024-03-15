@@ -17,7 +17,8 @@ class LoginAnimationController extends GetxController {
   SMITrigger? failTrigger, successTrigger;
   SMIBool? isHandsUp, isChecking;
   SMINumber? lookNum;
-  int initLength = 100;
+  double rtlValue = 100;
+  double ltrValue = 0;
   @override
   void onInit() {
     super.onInit();
@@ -50,14 +51,20 @@ class LoginAnimationController extends GetxController {
   void lookAround() {
     isChecking?.change(true);
     isHandsUp?.change(false);
-    lookNum?.change(initLength.toDouble());
+    !isRtl() ? lookNum?.change(ltrValue) : lookNum?.change(rtlValue);
   }
 
   void moveEyes(int value) {
+    if (!isRtl()) {
+      lookNum?.change((value * 3).toDouble());
+      ltrValue = (value * 3).toDouble();
+      return;
+    }
     int i = 100;
     double newValue = i - (value * 3);
     if (newValue <= 4) return;
     lookNum?.change(newValue);
+    rtlValue = newValue;
   }
 
   void handsUpOnEyes() {
@@ -92,5 +99,13 @@ class LoginAnimationController extends GetxController {
   void onClose() {
     super.onClose();
     keyboardSubscription.cancel();
+  }
+
+  bool isRtl() {
+    final locale = Get.locale;
+    if (locale != null) {
+      return locale.languageCode == 'ar' ? true : false;
+    }
+    return false;
   }
 }

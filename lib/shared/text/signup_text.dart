@@ -17,4 +17,5 @@ class SignUpText {
   static String example = 'example@example.com';
   static String alreadyAccount = 'Already have an account?';
   static String signIn = 'Sign In';
+  static String signUp = 'Sign Up'; 
   }

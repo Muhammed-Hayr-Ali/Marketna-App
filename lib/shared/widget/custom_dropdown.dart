@@ -72,37 +72,34 @@ class _CustomDropdownState extends State<CustomDropdown> {
                 color: widget.backgrond ?? Colors.grey.shade100,
                 borderRadius:
                     BorderRadius.circular(widget.borderRadius ?? 10.0)),
-            child: Expanded(
-              child: DropdownButton(
-                value: value,
-                items: widget.items
-                    .map((e) => DropdownMenuItem(
-                          value: e,
-                          child: Text(
-                            e.tr,
-                            style: TextStyle(
-                                fontFamily: Strings.defaultFont,
-                                fontSize: e == widget.value ? 12 : 14,
-                                fontWeight: FontWeight.bold,
-                                color: e == widget.value
-                                    ? Colors.grey.shade400
-                                    : AppColors.grayColor),
-                          ),
-                        ))
-                    .toList(),
-                onChanged: (value) => onChanged(value),
-                underline: const SizedBox(),
-                icon: const SizedBox(),
-                isExpanded: true,
-                style: const TextStyle(color: Colors.black),
-                dropdownColor: Colors.grey.shade100,
-                borderRadius:
-                    BorderRadius.circular(widget.borderRadius ?? 10.0),
-                iconSize: 30.0,
-                elevation: 16,
-                alignment: Alignment.centerRight,
-                menuMaxHeight: 300.0,
-              ),
+            child: DropdownButton(
+              value: value,
+              items: widget.items
+                  .map((e) => DropdownMenuItem(
+                        value: e,
+                        child: Text(
+                          e.tr,
+                          style: TextStyle(
+                              fontFamily: Strings.defaultFont,
+                              fontSize: e == widget.value ? 12 : 14,
+                              fontWeight: FontWeight.bold,
+                              color: e == widget.value
+                                  ? Colors.grey.shade400
+                                  : AppColors.grayColor),
+                        ),
+                      ))
+                  .toList(),
+              onChanged: (value) => onChanged(value),
+              underline: const SizedBox(),
+              icon: const SizedBox(),
+              isExpanded: true,
+              style: const TextStyle(color: Colors.black),
+              dropdownColor: Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.0),
+              iconSize: 30.0,
+              elevation: 16,
+              alignment: Alignment.centerRight,
+              menuMaxHeight: 300.0,
             )),
       ],
     );

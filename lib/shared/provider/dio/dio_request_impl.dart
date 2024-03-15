@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:marketna_app/generated/strings.dart';
+import 'package:marketna_app/generated/api_url.dart';
 import 'package:marketna_app/shared/provider/dio/dio_request.dart';
 import 'package:marketna_app/shared/provider/request/request.dart';
 
@@ -8,7 +8,7 @@ class DioRequestImpl implements DioRequest {
   late Dio dio;
   DioRequestImpl() {
     BaseOptions options = BaseOptions(
-      baseUrl: Strings.baseUrl,
+      baseUrl: ApiUrl.baseUrl,
       receiveDataWhenStatusError: true,
       connectTimeout: const Duration(seconds: 20), // 20 seconds
       receiveTimeout: const Duration(seconds: 20),

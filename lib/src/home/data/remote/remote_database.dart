@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:marketna_app/generated/strings.dart';
+import 'package:marketna_app/generated/api_url.dart';
 import 'package:marketna_app/shared/provider/dio/dio_request.dart';
 import 'package:marketna_app/shared/provider/dio/dio_request_impl.dart';
 import 'package:marketna_app/shared/provider/request/request.dart';
@@ -22,7 +22,7 @@ class HomeRemoteDatabaseImpl implements HomeRemoteDatabase {
   Future<Response> getAllProduct() async {
     final Response response = await dioRequest.request(
         requestMethod: const RequestMethod.get(
-      requestParameters: RequestParameters(url: Strings.getAllProducts),
+      requestParameters: RequestParameters(url: ApiUrl.getAllProducts),
     ));
     return response;
   }
@@ -31,7 +31,7 @@ class HomeRemoteDatabaseImpl implements HomeRemoteDatabase {
   Future<Response> getCategory() async{
     final Response response = await dioRequest.request(
         requestMethod: const RequestMethod.get(
-      requestParameters: RequestParameters(url: Strings.getCategory),
+      requestParameters: RequestParameters(url: ApiUrl.getCategory),
     ));
     return response;
   }
@@ -40,7 +40,7 @@ class HomeRemoteDatabaseImpl implements HomeRemoteDatabase {
   Future<Response> getPremiumProduct()async{
     final Response response = await dioRequest.request(
         requestMethod: const RequestMethod.get(
-      requestParameters: RequestParameters(url: Strings.getPrimiumProducts),
+      requestParameters: RequestParameters(url: ApiUrl.getPrimiumProducts),
     ));
     return response;
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:marketna_app/generated/app_colors.dart';
-import 'package:marketna_app/generated/text.dart';
+import 'package:marketna_app/shared/text/update_pass_text.dart';
 import 'package:marketna_app/shared/validator/validator.dart';
 import 'package:marketna_app/shared/widget/custom_button.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
@@ -42,100 +42,96 @@ class UpdatePassScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     _email.text = arguments;
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
-      body: SafeArea(
-        child: Form(
-          key: _formKey,
+      appBar: AppBar(),
+      body: Form(
+        key: _formKey,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SingleChildScrollView(
-            child: SizedBox(
-              height: Get.height - 35,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: PageTitle(
-                      title: TEXT.updatePassword,
-                      subTitle: TEXT.createNewPassword,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                PageTitle(
+                  title: UpdatePassText.title,
+                  subTitle: UpdatePassText.subTitle,
+                ),
+                const SizedBox(height: 30),
+                CustomTextField(
+                  enabled: false,
+                  label: UpdatePassText.email,
+                  hintText: UpdatePassText.example,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: Validator.validateEmail,
+                  controller: _email,
+                  padding: const EdgeInsets.all(10),
+                ),
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: CustomText(
+                    UpdatePassText.resetCode,
+                    fontSize: 12,
+                    color: AppColors.grayColor,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 2.0),
+                  child: Obx(
+                    () => OtpTextField(
+                      numberOfFields: 6,
+                      filled: true,
+                      fillColor: Colors.grey.shade200,
+                      borderWidth: 0,
+                      borderColor: Colors.transparent,
+                      borderRadius: BorderRadius.circular(10),
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      showFieldAsBox: true,
+                      enabledBorderColor:
+                          _.isObscure.value ? Colors.red : Colors.grey.shade200,
+                      focusedBorderColor: Colors.transparent,
+                      onSubmit: (String verificationCode) {
+                        _resetCode.text = verificationCode;
+                        _.isObscure.value = false;
+                      },
+                      keyboardType: TextInputType.number,
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.all(10.0),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 8.0, vertical: 20),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
-                    child: Column(
-                      children: [
-                        CustomTextField(
-                          enabled: false,
-                          hintText: TEXT.email.tr,
-                          keyboardType: TextInputType.emailAddress,
-                          validator: Validator.validateEmail,
-                          controller: _email,
-                          padding: const EdgeInsets.all(10),
-                        ),
-                        const SizedBox(height: 10),
-                        CustomText(
-                          TEXT.enterResetCode,
-                          color: AppColors.grayColor,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Obx(
-                            () => OtpTextField(
-                                numberOfFields: 6,
-                                borderColor: Colors.grey.shade200,
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 4),
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                showFieldAsBox: true,
-                                enabledBorderColor: _.isObscure.value
-                                    ? Colors.red
-                                    : Colors.grey.shade200,
-                                focusedBorderColor: AppColors.primaryColor,
-                                onSubmit: (String verificationCode) {
-                                  _resetCode.text = verificationCode;
-                                  _.isObscure.value = false;
-                                }),
-                          ),
-                        ),
-                        CustomTextField(
-                          isPassword: true,
-                          hintText: TEXT.password.tr,
-                          keyboardType: TextInputType.visiblePassword,
-                          validator: Validator.validatePassword,
-                          controller: _password,
-                          padding: const EdgeInsets.all(10),
-                        ),
-                        CustomTextField(
-                          isPassword: true,
-                          hintText: TEXT.confirmPassword.tr,
-                          keyboardType: TextInputType.visiblePassword,
-                          validator: (value) =>
-                              Validator.validateconfirmPassword(
-                                  value, _password.text),
-                          controller: _confirmPassword,
-                          padding: const EdgeInsets.all(10),
-                        ),
-                        Obx(
-                          () => CustomButton(
-                              isLoading: _.isLoading.value,
-                              onPressed: resetPass,
-                              color: AppColors.primaryColor,
-                              elevation: 0,
-                              progressColor: Colors.white,
-                              child: CustomText(TEXT.updatePassword,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 10),
+                CustomTextField(
+                  isPassword: true,
+                  label: UpdatePassText.password,
+                  hintText: '********',
+                  keyboardType: TextInputType.visiblePassword,
+                  validator: Validator.validatePassword,
+                  controller: _password,
+                  padding: const EdgeInsets.all(10),
+                ),
+                CustomTextField(
+                  isPassword: true,
+                  label: UpdatePassText.confirmPassword,
+                  hintText: '********',
+                  keyboardType: TextInputType.visiblePassword,
+                  validator: (value) =>
+                      Validator.validateconfirmPassword(value, _password.text),
+                  controller: _confirmPassword,
+                  padding: const EdgeInsets.all(10),
+                ),
+                const SizedBox(height: 32),
+                Obx(
+                  () => CustomButton(
+                      isLoading: _.isLoading.value,
+                      onPressed: resetPass,
+                      color: AppColors.primaryColor,
+                      elevation: 0,
+                      borderRadius: 100,
+                      progressColor: Colors.white,
+                      child: CustomText(UpdatePassText.updatePassword,
+                          color: Colors.white, fontWeight: FontWeight.bold)),
+                ),
+              ],
             ),
           ),
         ),

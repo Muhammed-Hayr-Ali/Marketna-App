@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:marketna_app/generated/strings.dart';
+import 'package:marketna_app/generated/api_url.dart';
 import 'package:marketna_app/shared/provider/dio/dio_request.dart';
 import 'package:marketna_app/shared/provider/dio/dio_request_impl.dart';
 import 'package:marketna_app/shared/provider/request/request.dart';
@@ -24,7 +24,7 @@ class AuthRemoteDatabaseImpl implements AuthRemoteDatabase {
     Response response = await dioRequest.request(
       requestMethod: RequestMethod.post(
           requestParameters:
-              RequestParameters(url: Strings.continueWithGoogle, data: data)),
+              RequestParameters(url: ApiUrl.continueWithGoogle, data: data)),
     );
     return response;
   }

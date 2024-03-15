@@ -2,6 +2,7 @@ import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marketna_app/generated/app_colors.dart';
+import 'package:marketna_app/shared/text/date_picker.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 
 class CustomDatePicker extends StatefulWidget {
@@ -42,13 +43,14 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
       lastDate: DateTime.now(),
       initialDatePickerMode: DatePickerMode.day,
       initialEntryMode: DatePickerEntryMode.calendar,
-      helpText: 'Select a date'.tr,
-      cancelText: 'Cancel'.tr,
-      confirmText: 'Ok'.tr,
-      fieldHintText: 'Year-Month-Day'.tr,
-      fieldLabelText: 'Date'.tr,
-      errorFormatText: 'Invalid date format'.tr,
-      errorInvalidText: 'Invalid date'.tr,
+      helpText: (widget.label ?? '').tr,
+      cancelText: DatePickerText.cancelText.tr,
+      confirmText: DatePickerText.confirmText.tr,
+      barrierLabel: DatePickerText.barrierLabel.tr,
+      fieldHintText: DatePickerText.fieldHintText.tr,
+      fieldLabelText: DatePickerText.fieldLabelText.tr,
+      errorFormatText: DatePickerText.errorFormatText.tr,
+      errorInvalidText: DatePickerText.errorInvalidText.tr,
     );
 
     if (picked != null) {

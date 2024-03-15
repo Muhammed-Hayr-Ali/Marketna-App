@@ -72,6 +72,7 @@ class SignupScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 PageTitle(
@@ -79,16 +80,19 @@ class SignupScreen extends StatelessWidget {
                   subTitle: SignUpText.subTitle,
                 ),
                 const SizedBox(height: 30),
-                Inkk(
-                  radius: 999,
-                  onTap: selectImage,
-                  child: Obx(
-                    () => CustomAvatar(
-                      borderColor:
-                          _.invaldPath.value ? Colors.red : Colors.transparent,
-                      borderWidth: _.invaldPath.value ? 1 : 0,
-                      sourceImage: SourceImage.localImage,
-                      path: _.path.value,
+                Center(
+                  child: Inkk(
+                    radius: 999,
+                    onTap: selectImage,
+                    child: Obx(
+                      () => CustomAvatar(
+                        borderColor: _.invaldPath.value
+                            ? Colors.red
+                            : Colors.transparent,
+                        borderWidth: _.invaldPath.value ? 1 : 0,
+                        sourceImage: SourceImage.localImage,
+                        path: _.path.value,
+                      ),
                     ),
                   ),
                 ),
@@ -152,6 +156,7 @@ class SignupScreen extends StatelessWidget {
                         child: CustomText(
                           SignUpText.signIn,
                           fontSize: 12,
+                          fontWeight: FontWeight.bold,
                           color: AppColors.primaryColor,
                         ),
                       ),
@@ -166,7 +171,7 @@ class SignupScreen extends StatelessWidget {
                       elevation: 0,
                       borderRadius: 100,
                       progressColor: Colors.white,
-                      child: CustomText(SignUpText.signIn,
+                      child: CustomText(SignUpText.createAccount,
                           color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
                 const SizedBox(height: 28),

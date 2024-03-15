@@ -2,8 +2,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:marketna_app/generated/strings.dart';
 
 abstract class HomeLocalDatabase {
-  final GetStorage storage;
-  HomeLocalDatabase({required this.storage});
 
   Future<String> getPremiumProduct();
   Future<String> getCategory();
@@ -15,8 +13,8 @@ abstract class HomeLocalDatabase {
 }
 
 class HomeLocalDatabaseImpl implements HomeLocalDatabase {
-  @override
-  GetStorage get storage => GetStorage();
+
+ final GetStorage storage = GetStorage();
   
   @override
   Future<String> getAllProduct() async {
