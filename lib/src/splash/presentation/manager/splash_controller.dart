@@ -1,17 +1,17 @@
 import 'package:get/get.dart';
 import 'package:marketna_app/routes/app_pages.dart';
 import 'package:marketna_app/shared/provider/api_result/api_result.dart';
-import 'package:marketna_app/src/splash/domain/repositories/splash_repo.dart';
+import 'package:marketna_app/src/splash/domain/use_cases/use_cases.dart';
 
 class SplashController extends GetxController {
-  final SplashRepo splashRepo;
+  final useCases = Get.find<SplashUseCasesImpl>();
+
   RxBool isLoading = false.obs;
   RxBool hasError = false.obs;
   RxString errorMessage = ''.obs;
-  SplashController({required this.splashRepo});
 
   Future<void> checkExistsToken() async {
-    ApiResult result = await splashRepo.checkExistsToken();
+    ApiResult result = await useCases.checkExistsToken();
     result.when(
       success:
           (bool status, String message, dynamic data, dynamic value) async {

@@ -6,7 +6,7 @@ import 'package:marketna_app/src/home/domain/repositories/repositories.dart';
 import 'package:marketna_app/src/home/domain/use_cases/home_use_cases.dart';
 
 class HomeServices extends GetxService {
-  Future<void> init() async {
+  Future<HomeServices> init() async {
     Get.put<HomeLocalDatabase>(HomeLocalDatabaseImpl());
     Get.put<HomeRemoteDatabase>(HomeRemoteDatabaseImpl());
 
@@ -16,5 +16,6 @@ class HomeServices extends GetxService {
     ));
 
     Get.put<HomeUseCasesImpl>(HomeUseCasesImpl(homeRepo: Get.find<HomeRepo>()));
+    return this;
   }
 }

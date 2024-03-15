@@ -5,6 +5,7 @@ import 'package:marketna_app/shared/widget/custom_notification.dart';
 import 'package:marketna_app/src/reset_password/domain/use_cases/reset_pass_use_cases.dart';
 
 class ResetPassController extends GetxController {
+  
   final resetPassUseCases = Get.find<ResetPassUseCasesImpl>();
   RxBool isLoading = false.obs;
 

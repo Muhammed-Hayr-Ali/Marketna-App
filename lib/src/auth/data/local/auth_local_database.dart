@@ -3,9 +3,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:marketna_app/generated/strings.dart';
 
 abstract class AuthLocalDatabase {
-  final GetStorage storage;
-
-  AuthLocalDatabase({required this.storage});
 
   /// saveProfile
   Future<void> saveProfile({required Map<String, dynamic> profile});
@@ -15,8 +12,7 @@ abstract class AuthLocalDatabase {
 }
 
 class AuthLocalDatabaseImpl implements AuthLocalDatabase {
-  @override
-  GetStorage get storage => GetStorage();
+  GetStorage storage = GetStorage();
 
 
   @override

@@ -2,9 +2,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:marketna_app/generated/strings.dart';
 
 abstract class SigninLocalDatabase {
-  final GetStorage storage;
-  SigninLocalDatabase({required this.storage});
-
   /// saveProfile
   Future<void> saveProfile({required Map<String, dynamic> profile});
 
@@ -13,8 +10,7 @@ abstract class SigninLocalDatabase {
 }
 
 class SigninLocalDatabaseImpl implements SigninLocalDatabase {
-  @override
-  GetStorage get storage => GetStorage();
+  final GetStorage storage = GetStorage();
 
   @override
   Future<void> saveProfile({required Map<String, dynamic> profile}) async {

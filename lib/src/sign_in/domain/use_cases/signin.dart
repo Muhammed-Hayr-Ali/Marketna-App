@@ -6,8 +6,6 @@ abstract class SigninUseCases{
   Future<ApiResult> call({required String email, required String password});
 }
 
-
-
 class SigninUseCasesImpl implements SigninUseCases {
   final SigninRepo repository;
 

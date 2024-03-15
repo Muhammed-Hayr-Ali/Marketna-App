@@ -3,9 +3,7 @@ import 'package:marketna_app/generated/strings.dart';
 
 abstract class SplashLocalDatabase {
 
-  final GetStorage storage;
 
-  SplashLocalDatabase({required this.storage});
 
   /// Returns the token
   Future<String> retrieveToken();
@@ -20,8 +18,7 @@ abstract class SplashLocalDatabase {
 class SplashLocalDatabaseImpl implements SplashLocalDatabase {
 
 
-  @override
-  GetStorage get storage => GetStorage();
+ GetStorage  storage = GetStorage();
 
 
 

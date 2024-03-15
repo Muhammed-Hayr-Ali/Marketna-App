@@ -15,8 +15,6 @@ class SigninController extends GetxController {
 
 
 
-
-
   Future<void> signin({required String email, required String password}) async {
     isLoading(true);
     controller.loginClick();

@@ -22,32 +22,3 @@ class SigninService extends GetxService {
     return this;
   }
 }
-//   @override
-//   void dependencies() {
-//  Get.lazyPut<SigninLocalDatabase>( () => SigninLocalDatabaseImpl());
-//     Get.lazyPut<SigninRemoteDatabase>(() =>  SigninRemoteDatabaseImpl());
-
-//     Get.lazyPut<SigninRepo>(() =>  SigninRepoImpl(
-//         localDatabase: Get.find<SigninLocalDatabase>(),
-//         remoteDatabase: Get.find<SigninRemoteDatabase>()));  }
-// }
-
-
-
-
-
-
-// class ProfileService extends GetxService {
-//   Future<ProfileService> init() async {
-//     Get.put<ProfileLocalDatabase>(ProfileLocalDatabaseImpl());
-//     Get.put<ProfileRemoteDatabase>(ProfileRemoteDatabaseImpl());
-//     Get.put<ProfileRepository>(ProfileRepositoryImpl(
-//       remoteDatabase: Get.find<ProfileRemoteDatabase>(),
-//       localDatabase: Get.find<ProfileLocalDatabase>(),
-//       networkInfo: Get.find<NetworkInfo>(),
-//     ));
-//     Get.put<RetrieveProfile>(RetrieveProfile(Get.find<ProfileRepository>()));
-//     Get.put<UpdateProfile>(UpdateProfile(Get.find<ProfileRepository>()));
-//     return this;
-//   }
-// }
