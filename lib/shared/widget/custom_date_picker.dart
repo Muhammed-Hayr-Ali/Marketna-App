@@ -13,7 +13,7 @@ class CustomDatePicker extends StatefulWidget {
   final double? height;
   final Color? backgrond;
   final double? borderRadius;
-  final String? hintText;
+  final String? label;
 
   const CustomDatePicker(
       {super.key,
@@ -25,7 +25,7 @@ class CustomDatePicker extends StatefulWidget {
       this.height,
       this.backgrond,
       this.borderRadius,
-      this.hintText});
+      this.label});
 
   @override
   State<CustomDatePicker> createState() => _CustomDatePickerState();
@@ -76,52 +76,61 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _selectDate,
-      child: Container(
-        height: widget.height ?? 52.0,
-        width: widget.width ?? double.infinity,
-        margin: widget.padding ?? const EdgeInsets.all(8.0),
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.0),
-            color: widget.backgrond ?? Colors.grey.shade100),
-        child: Row(
-          children: [
-            CustomText(
-              widget.hintText ?? '',
-              fontSize: 12,
-              color: Colors.grey.shade400,
-              fontWeight: FontWeight.bold,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        widget.label != null
+            ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: CustomText(
+                  widget.label,
+                  fontSize: 12,
+                  color: AppColors.grayColor,
+                ),
+              )
+            : const SizedBox.shrink(),
+        GestureDetector(
+          onTap: _selectDate,
+          child: Container(
+            height: widget.height ?? 52.0,
+            width: widget.width ?? double.infinity,
+            margin: widget.padding ?? const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.circular(widget.borderRadius ?? 10.0),
+                color: widget.backgrond ?? Colors.grey.shade100),
+            child: Row(
+              children: [
+                Expanded(
+                  child: dateTime != null
+                      ? CustomText(
+                          dateTime ?? '',
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        )
+                      : CustomText('1986-08-11',
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey.shade400),
+                ),
+                SizedBox(
+                  child: dateTime != null
+                      ? GestureDetector(
+                          onTap: _remove,
+                          child: Icon(
+                            Icons.cancel,
+                            size: 16,
+                            color: AppColors.grayColor,
+                          ),
+                        )
+                      : null,
+                )
+              ],
             ),
-            SizedBox(width: widget.hintText == null ? 0 : 10.0),
-            Expanded(
-              child: dateTime != null
-                  ? Text(
-                      dateTime ?? '',
-                      style: const TextStyle(fontSize: 18),
-                    )
-                  : Text(
-                      '1986-08-11',
-                      style:
-                          TextStyle(fontSize: 18, color: Colors.grey.shade400),
-                    ),
-            ),
-            SizedBox(
-              child: dateTime != null
-                  ? GestureDetector(
-                      onTap: _remove,
-                      child: Icon(
-                        Icons.cancel,
-                        size: 16,
-                        color: AppColors.grayColor,
-                      ),
-                    )
-                  : null,
-            )
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

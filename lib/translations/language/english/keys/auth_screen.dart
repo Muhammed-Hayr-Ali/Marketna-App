@@ -1,13 +1,13 @@
-import 'package:marketna_app/generated/text.dart';
+import 'package:marketna_app/shared/text/auth_text.dart';
 
 class AuthScreenTranslations {
-  Map<String, String> get page1Keys => {
-        TEXT.continueWithGoogle: 'Continue with Google',
-        TEXT.youCanAlso: 'You can also',
-        TEXT.signIn: 'Sign In',
-        TEXT.or: ' or ',
-        TEXT.createAnAccount: 'Create an account',
-        TEXT.byContinuingYouAgreeTo: 'By continuing, you agree to ',
-        TEXT.ourDataPolicy: 'our data policy'
+  Map<String, String> get keys => {
+        AuthText.continueWithGoogle: 'Continue with Google',
+        AuthText.youCanAlso: 'You can also',
+        AuthText.signIn: 'Sign In',
+        AuthText.or: ' or ',
+        AuthText.createAnAccount: 'Create an account',
+        AuthText.byContinuingYouAgreeTo: 'By continuing, you agree to ',
+        AuthText.ourDataPolicy: 'our data policy'
       };
 }

@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:marketna_app/generated/app_colors.dart';
 import 'package:marketna_app/generated/assets.dart';
-import 'package:marketna_app/generated/text.dart';
 import 'package:marketna_app/routes/app_pages.dart';
+import 'package:marketna_app/shared/text/auth_text.dart';
 import 'package:marketna_app/shared/widget/custom_button.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 import 'package:marketna_app/shared/widget/ink.dart';
@@ -27,6 +27,10 @@ class AuthScreen extends StatelessWidget {
 
   void _createNewAccount() async {
     Get.toNamed(AppRoutes.signup);
+  }
+
+  void _dataPolicy() {
+    _.launchDataPolicy();
   }
 
   @override
@@ -61,7 +65,7 @@ class AuthScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CustomText(
-                        TEXT.continueWithGoogle,
+                        AuthText.continueWithGoogle,
                         color: AppColors.grayColor,
                       ),
                       const SizedBox(width: 10),
@@ -70,28 +74,28 @@ class AuthScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 30),
-              CustomText(TEXT.youCanAlso, fontSize: 12),
+              const SizedBox(height: 20),
+              CustomText(AuthText.youCanAlso, fontSize: 12),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Inkk(
                     onTap: _createNewAccount,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: CustomText(TEXT.createAnAccount,
-                          fontSize: 12,
-                          color: AppColors.primaryColor,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    padding: const EdgeInsets.fromLTRB(4, 0, 4, 2),
+                    child: CustomText(AuthText.createAnAccount,
+                        fontSize: 12,
+                        color: AppColors.primaryColor,
+                        fontWeight: FontWeight.bold),
                   ),
                   CustomText(
-                    TEXT.or,
+                    AuthText.or,
                     fontSize: 12,
                   ),
                   Inkk(
                     onTap: _signIn,
-                    child: CustomText(TEXT.signIn,
+                    padding: const EdgeInsets.fromLTRB(4, 0, 4, 2),
+                    child: CustomText(AuthText.signIn,
                         fontSize: 12,
                         color: AppColors.primaryColor,
                         fontWeight: FontWeight.bold),
@@ -121,13 +125,17 @@ class AuthScreen extends StatelessWidget {
                     ),
                   ),
                   CustomText(
-                    TEXT.byContinuingYouAgreeTo,
+                    AuthText.byContinuingYouAgreeTo,
                     fontSize: 10,
                   ),
-                  CustomText(
-                    TEXT.ourDataPolicy,
-                    fontSize: 10,
-                    color: AppColors.primaryColor,
+                  Inkk(
+                    onTap: _dataPolicy,
+                    padding: const EdgeInsets.fromLTRB(4, 0, 4, 2),
+                    child: CustomText(
+                      AuthText.ourDataPolicy,
+                      fontSize: 10,
+                      color: AppColors.primaryColor,
+                    ),
                   ),
                 ],
               ),

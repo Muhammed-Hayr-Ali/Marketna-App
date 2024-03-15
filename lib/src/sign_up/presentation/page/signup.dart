@@ -4,11 +4,14 @@ import 'package:get/get.dart';
 import 'package:marketna_app/generated/app_colors.dart';
 import 'package:marketna_app/generated/assets.dart';
 import 'package:marketna_app/generated/text.dart';
+import 'package:marketna_app/routes/app_pages.dart';
+import 'package:marketna_app/shared/text/signup_text.dart';
 import 'package:marketna_app/shared/validator/validator.dart';
 import 'package:marketna_app/shared/widget/custom_avatar.dart';
 import 'package:marketna_app/shared/widget/custom_button.dart';
 import 'package:marketna_app/shared/widget/custom_date_picker.dart';
 import 'package:marketna_app/shared/widget/custom_dropdown.dart';
+import 'package:marketna_app/shared/widget/custom_text.dart';
 import 'package:marketna_app/shared/widget/custom_text_field.dart';
 import 'package:marketna_app/shared/image_picker/image_picker.dart';
 import 'package:marketna_app/shared/widget/ink.dart';
@@ -55,100 +58,118 @@ class SignupScreen extends StatelessWidget {
         '';
   }
 
+  void _goToSignIn() {
+    Get.toNamed(AppRoutes.signin);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
-      body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
+      appBar: AppBar(),
+      body: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                  height: 200,
-                  child: PageTitle(
-                    title: TEXT.signUp,
-                    subTitle: TEXT.createYourAccount,
+                PageTitle(
+                  title: SignUpText.title,
+                  subTitle: SignUpText.subTitle,
+                ),
+                const SizedBox(height: 30),
+                Inkk(
+                  radius: 999,
+                  onTap: selectImage,
+                  child: Obx(
+                    () => CustomAvatar(
+                      borderColor:
+                          _.invaldPath.value ? Colors.red : Colors.transparent,
+                      borderWidth: _.invaldPath.value ? 1 : 0,
+                      sourceImage: SourceImage.localImage,
+                      path: _.path.value,
+                    ),
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.all(10.0),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white),
-                  child: Column(
+                CustomTextField(
+                  label: SignUpText.name,
+                  hintText: SignUpText.nameHint,
+                  keyboardType: TextInputType.name,
+                  validator: Validator.validateName,
+                  controller: _name,
+                  padding: const EdgeInsets.all(10),
+                ),
+                CustomTextField(
+                  label: SignUpText.email,
+                  hintText: SignUpText.example,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: Validator.validateEmail,
+                  controller: _email,
+                  padding: const EdgeInsets.all(10),
+                ),
+                CustomTextField(
+                  isPassword: true,
+                  label: SignUpText.password,
+                  hintText: '********',
+                  keyboardType: TextInputType.visiblePassword,
+                  validator: Validator.validatePassword,
+                  controller: _password,
+                  padding: const EdgeInsets.all(10),
+                ),
+                CustomTextField(
+                  label: SignUpText.phoneNumber,
+                  hintText: SignUpText.phoneNumberHint,
+                  keyboardType: TextInputType.phone,
+                  validator: Validator.validatePhoneNumber,
+                  controller: _phoneNumber,
+                  padding: const EdgeInsets.all(10),
+                ),
+                CustomDatePicker(
+                    label: SignUpText.dateBirth, controller: _dateBirth),
+                CustomDropdown(
+                  label: SignUpText.gender,
+                  items: [
+                    SignUpText.unspecified,
+                    SignUpText.male,
+                    SignUpText.female
+                  ],
+                  value: SignUpText.unspecified,
+                  controller: _gender,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0, vertical: 16.0),
+                  child: Row(
                     children: [
+                      CustomText(
+                        SignUpText.alreadyAccount,
+                        fontSize: 12,
+                      ),
                       Inkk(
-                        radius: 999,
-                        onTap: selectImage,
-                        child: Obx(
-                          () => CustomAvatar(
-                            borderColor: _.invaldPath.value
-                                ? Colors.red
-                                : Colors.transparent,
-                            borderWidth: _.invaldPath.value ? 1 : 0,
-                            sourceImage: SourceImage.localImage,
-                            path: _.path.value,
-                          ),
-                        ),
-                      ),
-                      CustomTextField(
-                        hintText: TEXT.name.tr,
-                        keyboardType: TextInputType.name,
-                        validator: Validator.validateName,
-                        controller: _name,
-                        padding: const EdgeInsets.all(10),
-                      ),
-                      CustomTextField(
-                        hintText: TEXT.email.tr,
-                        keyboardType: TextInputType.emailAddress,
-                        validator: Validator.validateEmail,
-                        controller: _email,
-                        padding: const EdgeInsets.all(10),
-                      ),
-                      CustomTextField(
-                        isPassword: true,
-                        hintText: TEXT.password.tr,
-                        keyboardType: TextInputType.visiblePassword,
-                        validator: Validator.validatePassword,
-                        controller: _password,
-                        padding: const EdgeInsets.all(10),
-                      ),
-                      CustomTextField(
-                        hintText: TEXT.phoneNumber.tr,
-                        keyboardType: TextInputType.phone,
-                        validator: Validator.validatePhoneNumber,
-                        controller: _phoneNumber,
-                        padding: const EdgeInsets.all(10),
-                      ),
-                      CustomDatePicker(
-                          hintText: TEXT.dateBirth, controller: _dateBirth),
-                      CustomDropdown(
-                        hintText: TEXT.gender,
-                        items: [TEXT.unspecified, TEXT.mail, TEXT.female],
-                        value: TEXT.unspecified,
-                        controller: _gender,
-                      ),
-                      Obx(
-                        () => CustomButton(
-                          isLoading: _.isLoading.value,
-                          onPressed: login,
+                        onTap: _goToSignIn,
+                        padding: const EdgeInsets.fromLTRB(4, 0, 4, 2),
+                        child: CustomText(
+                          SignUpText.signIn,
+                          fontSize: 12,
                           color: AppColors.primaryColor,
-                          elevation: 0,
-                          progressColor: Colors.white,
-                          child: Text(TEXT.login.tr,
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold)),
                         ),
                       ),
                     ],
                   ),
                 ),
+                Obx(
+                  () => CustomButton(
+                      isLoading: _.isLoading.value,
+                      onPressed: login,
+                      color: AppColors.primaryColor,
+                      elevation: 0,
+                      borderRadius: 100,
+                      progressColor: Colors.white,
+                      child: CustomText(SignUpText.signIn,
+                          color: Colors.white, fontWeight: FontWeight.bold)),
+                ),
+                const SizedBox(height: 28),
               ],
             ),
           ),

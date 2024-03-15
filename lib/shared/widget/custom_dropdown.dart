@@ -12,7 +12,7 @@ class CustomDropdown extends StatefulWidget {
   final double? height;
   final Color? backgrond;
   final double? borderRadius;
-  final String? hintText;
+  final String? label;
   final TextEditingController controller;
 
   const CustomDropdown(
@@ -25,7 +25,7 @@ class CustomDropdown extends StatefulWidget {
       this.borderRadius,
       this.height,
       required this.controller,
-      this.hintText});
+      this.label});
 
   @override
   State<CustomDropdown> createState() => _CustomDropdownState();
@@ -48,25 +48,31 @@ class _CustomDropdownState extends State<CustomDropdown> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        //  alignment: Alignment.center,
-        margin: widget.padding ?? const EdgeInsets.all(8.0),
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-        width: widget.width ?? double.infinity,
-        height: widget.height ?? 52.0,
-        decoration: BoxDecoration(
-            color: widget.backgrond ?? Colors.grey.shade100,
-            borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.0)),
-        child: Row(
-          children: [
-            CustomText(
-              widget.hintText ?? '',
-              fontSize: 12,
-              color: Colors.grey.shade400,
-              fontWeight: FontWeight.bold,
-            ),
-            SizedBox(width: widget.hintText == null ? 0 : 10.0),
-            Expanded(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        widget.label != null
+            ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: CustomText(
+                  widget.label,
+                  fontSize: 12,
+                  color: AppColors.grayColor,
+                ),
+              )
+            : const SizedBox.shrink(),
+        Container(
+            //  alignment: Alignment.center,
+            margin: widget.padding ?? const EdgeInsets.all(8.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+            width: widget.width ?? double.infinity,
+            height: widget.height ?? 52.0,
+            decoration: BoxDecoration(
+                color: widget.backgrond ?? Colors.grey.shade100,
+                borderRadius:
+                    BorderRadius.circular(widget.borderRadius ?? 10.0)),
+            child: Expanded(
               child: DropdownButton(
                 value: value,
                 items: widget.items
@@ -76,7 +82,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
                             e.tr,
                             style: TextStyle(
                                 fontFamily: Strings.defaultFont,
-                                fontSize: 14,
+                                fontSize: e == widget.value ? 12 : 14,
                                 fontWeight: FontWeight.bold,
                                 color: e == widget.value
                                     ? Colors.grey.shade400
@@ -97,8 +103,8 @@ class _CustomDropdownState extends State<CustomDropdown> {
                 alignment: Alignment.centerRight,
                 menuMaxHeight: 300.0,
               ),
-            ),
-          ],
-        ));
+            )),
+      ],
+    );
   }
 }

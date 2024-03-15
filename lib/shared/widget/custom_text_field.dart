@@ -63,9 +63,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          widget.label == null
+          widget.label != null
               ? CustomText(
-                  '',
+                  widget.label,
                   fontSize: 12,
                   color: AppColors.grayColor,
                 )

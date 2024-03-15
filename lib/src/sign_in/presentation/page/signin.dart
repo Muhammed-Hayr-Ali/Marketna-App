@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marketna_app/generated/app_colors.dart';
-import 'package:marketna_app/generated/text.dart';
 import 'package:marketna_app/routes/app_pages.dart';
 import 'package:marketna_app/shared/login_animation/login_animation.dart';
 import 'package:marketna_app/shared/login_animation/login_animation_controller.dart';
+import 'package:marketna_app/shared/text/signin_text.dart';
 import 'package:marketna_app/shared/validator/validator.dart';
 import 'package:marketna_app/shared/widget/custom_button.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 import 'package:marketna_app/shared/widget/custom_text_field.dart';
+import 'package:marketna_app/shared/widget/ink.dart';
 import 'package:marketna_app/shared/widget/title_page.dart';
 import 'package:marketna_app/src/sign_in/presentation/manager/signin_controller.dart';
 
@@ -36,82 +37,70 @@ class SigninScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
-      body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: SizedBox(
-              height: Get.height - 35,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
+      appBar: AppBar(),
+      body: Form(
+        key: _formKey,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            children: [
+              PageTitle(
+                title: SignInText.title,
+                subTitle: SignInText.subTitle,
+              ),
+              const SizedBox(height: 30),
+              LoginAnimation(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: PageTitle(
-                      title: TEXT.signinTitle,
-                      subTitle: TEXT.signinSubTitle,
+                  CustomTextField(
+                    onTap: () => controller.lookAround(),
+                    label: SignInText.email,
+                    hintText: SignInText.example,
+                    keyboardType: TextInputType.emailAddress,
+                    validator: Validator.validateEmail,
+                    controller: _email,
+                    padding: const EdgeInsets.all(10),
+                    onChanged: (value) => controller.moveEyes(value.length),
+                  ),
+                  CustomTextField(
+                    onTap: controller.handsUpOnEyes,
+                    isPassword: true,
+                    label: SignInText.password.tr,
+                    hintText: '*******',
+                    keyboardType: TextInputType.visiblePassword,
+                    validator: Validator.validatePassword,
+                    controller: _password,
+                    padding: const EdgeInsets.all(10),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 16.0),
+                    child: Inkk(
+                      onTap: forgotPassword,
+                      padding: const EdgeInsets.fromLTRB(4, 0, 4, 2),
+                      child: CustomText(
+                        SignInText.forgotPassword,
+                        fontSize: 12,
+                        color: AppColors.primaryColor,
+                      ),
                     ),
                   ),
-                  LoginAnimation(),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(10.0, 0, 10, 10),
-                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
-                    child: Column(
-                      children: [
-                        CustomTextField(
-                          onTap: () => controller.lookAround(),
-                          hintText: TEXT.email.tr,
-                          keyboardType: TextInputType.emailAddress,
-                          validator: Validator.validateEmail,
-                          controller: _email,
-                          padding: const EdgeInsets.all(10),
-                          onChanged: (value) =>
-                              controller.moveEyes(value.length),
-                        ),
-                        CustomTextField(
-                          onTap: controller.handsUpOnEyes,
-                          isPassword: true,
-                          hintText: TEXT.password.tr,
-                          keyboardType: TextInputType.visiblePassword,
-                          validator: Validator.validatePassword,
-                          controller: _password,
-                          padding: const EdgeInsets.all(10),
-                        ),
-                        Obx(
-                          () => CustomButton(
-                              isLoading: _.isLoading.value,
-                              onPressed: login,
-                              color: AppColors.primaryColor,
-                              elevation: 0,
-                              progressColor: Colors.white,
-                              child: CustomText(TEXT.login.tr,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CustomText(
-                              TEXT.forgotPassword,
-                              color: Colors.grey,
-                              fontSize: 12,
-                            ),
-                            TextButton(
-                                onPressed: forgotPassword,
-                                child: CustomText(
-                                  TEXT.reset,
-                                )),
-                          ],
-                        )
-                      ],
-                    ),
+                  Obx(
+                    () => CustomButton(
+                        isLoading: _.isLoading.value,
+                        onPressed: login,
+                        color: AppColors.primaryColor,
+                        elevation: 0,
+                        progressColor: Colors.white,
+                        borderRadius: 100,
+                        child: CustomText(SignInText.signIn,
+                            color: Colors.white, fontWeight: FontWeight.bold)),
                   ),
                 ],
               ),
-            ),
+              const SizedBox()
+            ],
           ),
         ),
       ),

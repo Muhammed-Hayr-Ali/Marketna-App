@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketna_app/generated/app_colors.dart';
 
 class Inkk extends StatelessWidget {
   final Widget child;
@@ -9,7 +10,7 @@ class Inkk extends StatelessWidget {
   final VoidCallback? onLongPress;
   final String? tooltip;
   final bool disable;
-
+  final EdgeInsetsGeometry? padding;
   const Inkk({
     Key? key,
     required this.child,
@@ -20,6 +21,7 @@ class Inkk extends StatelessWidget {
     this.disable = false,
     this.onLongPress,
     this.highlightColor,
+    this.padding,
   }) : super(key: key);
 
   @override
@@ -38,7 +40,10 @@ class Inkk extends StatelessWidget {
   Widget stack(BorderRadius borderRadius) {
     return Stack(
       children: [
-        child,
+        Padding(
+          padding: padding ?? const EdgeInsets.all(0),
+          child: child,
+        ),
         if (disable == false)
           Positioned.fill(
               child: Material(
@@ -46,12 +51,10 @@ class Inkk extends StatelessWidget {
             color: Colors.transparent,
             borderRadius: borderRadius,
             child: InkWell(
-              highlightColor: highlightColor != null
-                  ? highlightColor!.withOpacity(0.35)
-                  : Colors.transparent,
-              splashColor: spalshColor != null
-                  ? spalshColor!.withOpacity(0.25)
-                  : Colors.transparent,
+              highlightColor:
+                  (highlightColor ?? AppColors.primaryColor).withOpacity(0.25),
+              splashColor:
+                  (spalshColor ?? AppColors.primaryColor).withOpacity(0.25),
               onTap: onTap ?? () {},
               onLongPress: onLongPress ?? () {},
             ),

@@ -5,9 +5,11 @@ class Strings {
   static const String appTitle = 'Marketna';
   static const String appversion = '1.0.0';
   static const String defaultFont = 'ReadexPro';
+  static String getPrivacyPolicyUrl =
+      'https://www.freeprivacypolicy.com/live/00f25697-39a1-4cd6-a756-beec184a6055';
 
   /// API URl
-  static const String baseUrl = 'http://192.168.0.103:8000';
+  static const String baseUrl = 'http://192.168.74.175:8000';
   static const String signIn = '/api/v1/auth/signIn';
   static const String signUp = '/api/v1/auth/signUp';
   static const String continueWithGoogle = '/api/v1/auth/googleSignIn';
