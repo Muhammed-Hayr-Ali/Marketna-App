@@ -37,8 +37,6 @@ class CarouselWidget extends StatelessWidget {
                 return Container(
                   margin: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Inkk(
-                    ///TODO: Add onLongPress
-                    // onLongPress: () => addToCart(productId: product.id),
                     child: ClipRRect(
                       borderRadius:
                           const BorderRadius.all(Radius.circular(10.0)),

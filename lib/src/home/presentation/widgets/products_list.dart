@@ -17,10 +17,6 @@ class ProductsList extends StatelessWidget {
 
   final HomeScreenController _ = Get.find<HomeScreenController>();
 
-  void addToCart({required int productId}) {
-    ///TODO Add to cart
-    //  _cartController.addToCart(id: productId);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +31,6 @@ class ProductsList extends StatelessWidget {
         crossAxisSpacing: 18,
         itemBuilder: (context, index) {
           return card(
-            onLongPress: () =>
-                addToCart(productId: _.allProductList[index].id!),
             product: _.allProductList[index],
           );
         },

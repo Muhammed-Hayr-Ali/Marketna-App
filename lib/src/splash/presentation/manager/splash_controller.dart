@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
 import 'package:marketna_app/routes/app_pages.dart';
-import 'package:marketna_app/services/app_sercives.dart';
-import 'package:marketna_app/services/auth_services.dart';
 import 'package:marketna_app/shared/provider/api_result/api_result.dart';
 import 'package:marketna_app/src/splash/domain/repositories/splash_repo.dart';
 
@@ -17,9 +15,7 @@ class SplashController extends GetxController {
     result.when(
       success:
           (bool status, String message, dynamic data, dynamic value) async {
-        ///TODO: INIT APP SERVICES
-        await appServices()
-            .whenComplete(() => Get.offAllNamed(AppRoutes.bottomNavBar));
+        Get.offAllNamed(AppRoutes.bottomNavBar);
       },
       failure: (bool status, String message) async {
         if (message == 'Connection error' ||
@@ -29,9 +25,7 @@ class SplashController extends GetxController {
           hasError.value = true;
           errorMessage.value = message;
         } else {
-          ///TODO: INIT AUTH SERVICES
-          await authServices()
-              .whenComplete(() => Get.offAllNamed(AppRoutes.auth));
+          Get.offAllNamed(AppRoutes.auth);
         }
       },
     );
@@ -40,7 +34,8 @@ class SplashController extends GetxController {
 
   @override
   void onInit() {
-    Future.delayed(const Duration(milliseconds: 3500), () => checkExistsToken());
+    Future.delayed(
+        const Duration(milliseconds: 3500), () => checkExistsToken());
     super.onInit();
   }
 

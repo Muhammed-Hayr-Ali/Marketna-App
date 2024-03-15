@@ -3,7 +3,7 @@ import 'package:marketna_app/generated/app_colors.dart';
 
 BottomNavigationBarThemeData bottomNavigationBarTheme =
     BottomNavigationBarThemeData(
-  elevation: 0,
+  elevation: 5,
   backgroundColor: Colors.white,
   selectedItemColor: AppColors.primaryColor,
   unselectedItemColor: AppColors.grayColor,

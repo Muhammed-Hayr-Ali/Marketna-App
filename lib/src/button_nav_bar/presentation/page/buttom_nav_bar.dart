@@ -10,7 +10,7 @@ class BottonNavBar extends StatelessWidget {
   BottonNavBar({super.key});
 
   final List<Widget> pages = [
-     HomeScreen(),
+    const HomeScreen(),
     const Center(child: Text('Search')),
     const Center(child: Text('Notification')),
     ProfileScreen(),

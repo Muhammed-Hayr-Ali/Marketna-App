@@ -7,7 +7,6 @@ import 'package:marketna_app/src/reset_password/domain/binding/reser_pass_bindin
 import 'package:marketna_app/src/reset_password/presentation/page/reset_pass.dart';
 import 'package:marketna_app/src/sign_in/domain/binding/signin_binding.dart';
 import 'package:marketna_app/src/sign_in/presentation/page/signin.dart';
-import 'package:marketna_app/src/home/presentation/page/home.dart';
 import 'package:marketna_app/src/sign_up/domain/binding/signup_binding.dart';
 import 'package:marketna_app/src/sign_up/presentation/page/signup.dart';
 import 'package:marketna_app/src/splash/domain/binding/splash_binding.dart';
