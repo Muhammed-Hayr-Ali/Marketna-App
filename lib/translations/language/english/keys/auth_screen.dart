@@ -8,6 +8,6 @@ class AuthScreenTranslations {
         AuthText.or: ' or ',
         AuthText.createAnAccount: 'Create an account',
         AuthText.byContinuingYouAgreeTo: 'By continuing, you agree to ',
-        AuthText.ourDataPolicy: 'our data policy'
+        AuthText.ourDataPolicy: 'our data policy',
       };
 }

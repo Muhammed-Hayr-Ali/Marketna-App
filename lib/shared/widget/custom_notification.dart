@@ -20,14 +20,11 @@ class CustomNotification {
       '',
       '',
       titleText: const SizedBox(),
-      messageText: CustomText(
-        message,
-       fontSize: 12.0
-      ),
+      messageText: CustomText(message, fontSize: 12.0),
       borderRadius: 4.0,
       snackPosition: SnackPosition.TOP,
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 16),
-      duration: const Duration(seconds: 4),
+      duration: const Duration(minutes: 4),
     );
   }
 }

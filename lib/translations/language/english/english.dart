@@ -5,11 +5,13 @@ import 'package:marketna_app/translations/language/english/keys/reser_pass_scree
 import 'package:marketna_app/translations/language/english/keys/signup_screen.dart';
 import 'package:marketna_app/translations/language/english/keys/auth_screen.dart';
 import 'package:marketna_app/translations/language/english/keys/signin_screen.dart';
+import 'package:marketna_app/translations/language/english/keys/splash_screen.dart';
 import 'package:marketna_app/translations/language/english/keys/update_pass_screen.dart';
 import 'package:marketna_app/translations/language/english/keys/validator.dart';
 
 class EnglishTranslations {
   Map<String, String> get englishKeys => {
+        ...SplashScreenTranslations().keys,
         ...AuthScreenTranslations().keys,
         ...SignUpScreenTranslations().keys,
         ...SigninScreenTranslations().keys,

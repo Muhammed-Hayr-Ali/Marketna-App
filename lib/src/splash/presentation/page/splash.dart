@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marketna_app/generated/app_colors.dart';
 import 'package:marketna_app/generated/strings.dart';
+import 'package:marketna_app/shared/text/splash_text.dart';
+import 'package:marketna_app/shared/widget/custom_text.dart';
 import 'package:marketna_app/shared/widget/logo.dart';
 import 'package:marketna_app/src/splash/presentation/manager/splash_controller.dart';
 import 'package:rive/rive.dart';
@@ -32,22 +35,30 @@ class SplashScreen extends StatelessWidget {
             children: [
               const SizedBox(),
               const SizedBox(
-                height: 100,
+                height: 200,
               ),
               const Center(child: Logo(type: LogoType.vertical)),
               Center(
                 child: Container(
                   alignment: Alignment.center,
-                  height: 100,
+                  height: 200,
                   child: Obx(
                     () => _.hasError.value
-                        ? Column(
-                            children: [
-                              Text(_.errorMessage.value.tr),
-                              const SizedBox(height: 10),
-                              ElevatedButton(
-                                  onPressed: retry, child: Text('Retry'.tr))
-                            ],
+                        ? Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Column(
+                              children: [
+                                CustomText(
+                                  _.errorMessage.value,
+                                  height: 2.0,
+                                  color: AppColors.grayColor,
+                                ),
+                                const SizedBox(height: 10),
+                                ElevatedButton(
+                                    onPressed: retry,
+                                    child: CustomText(SplashText.retry))
+                              ],
+                            ),
                           )
                         : const SizedBox(
                             height: 20,

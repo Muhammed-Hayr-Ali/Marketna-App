@@ -5,11 +5,13 @@ import 'package:marketna_app/translations/language/arabic/keys/dio_exception.dar
 import 'package:marketna_app/translations/language/arabic/keys/reser_pass_screen.dart';
 import 'package:marketna_app/translations/language/arabic/keys/signin_screen.dart';
 import 'package:marketna_app/translations/language/arabic/keys/signup_screen.dart';
+import 'package:marketna_app/translations/language/arabic/keys/splash_screen.dart';
 import 'package:marketna_app/translations/language/arabic/keys/update_pass_screen.dart';
 import 'package:marketna_app/translations/language/arabic/keys/validator.dart';
 
 class ArabicTranslations {
   Map<String, String> get arabicKeys => {
+        ...SplashScreenTranslations().keys,
         ...AuthScreenTranslations().keys,
         ...SignUpScreenTranslations().keys,
         ...SigninScreenTranslations().keys,

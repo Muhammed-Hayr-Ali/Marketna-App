@@ -40,7 +40,7 @@ class HomeRemoteDatabaseImpl implements HomeRemoteDatabase {
   Future<Response> getPremiumProduct()async{
     final Response response = await dioRequest.request(
         requestMethod: const RequestMethod.get(
-      requestParameters: RequestParameters(url: ApiUrl.getPrimiumProducts),
+      requestParameters: RequestParameters(url: ApiUrl.getPremiumProducts),
     ));
     return response;
   }
