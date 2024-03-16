@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:marketna_app/routes/app_pages.dart';
 import 'package:marketna_app/shared/provider/api_result/api_result.dart';
-import 'package:marketna_app/shared/widget/custom_notification.dart';
 import 'package:marketna_app/src/sign_up/domain/usecases/signup_use_cases_impl.dart';
 
 class SignupController extends GetxController {

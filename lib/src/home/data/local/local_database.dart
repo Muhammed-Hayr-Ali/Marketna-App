@@ -1,6 +1,5 @@
 import 'package:get_storage/get_storage.dart';
 import 'package:marketna_app/generated/local_storage_keys.dart';
-import 'package:marketna_app/generated/strings.dart';
 
 abstract class HomeLocalDatabase {
 
