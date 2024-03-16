@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:marketna_app/generated/api_url.dart';
 import 'package:marketna_app/shared/provider/dio/dio_request.dart';
 import 'package:marketna_app/shared/provider/dio/dio_request_impl.dart';
 import 'package:marketna_app/shared/provider/request/request.dart';
@@ -38,7 +39,7 @@ class SplashRemoteDatabaseImpl implements SplashRemoteDatabase {
     Response response = await dioRequest.request(
       requestMethod: RequestMethod.get(
         requestParameters: RequestParameters(
-            url: '/api/v1/auth/getUser',
+            url:ApiUrl.checkUser,
             authorization: {'Authorization': 'Bearer $token'}),
       ),
     );

@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
+import 'package:marketna_app/middleware/auth_middleware.dart';
 import 'package:marketna_app/src/auth/domain/binding/auth_binding.dart';
 import 'package:marketna_app/src/auth/presentation/page/auth_screen.dart';
 import 'package:marketna_app/src/button_nav_bar/domain/binding/botton_nav_bar_binding.dart';
 import 'package:marketna_app/src/button_nav_bar/presentation/page/buttom_nav_bar.dart';
+import 'package:marketna_app/src/profile/presentation/page/testpage.dart';
 import 'package:marketna_app/src/reset_password/domain/binding/reser_pass_binding.dart';
 import 'package:marketna_app/src/reset_password/presentation/page/reset_pass.dart';
 import 'package:marketna_app/src/sign_in/domain/binding/signin_binding.dart';
@@ -59,7 +61,7 @@ class RouteGet {
     ),
 
     /// Home
-    GetPage(name: AppRoutes.bottomNavBar, page: () => BottonNavBar(), binding: BottomNavBarBinding()),
-    // GetPage(name: AppRoutes.home, page: () => const HomeScreen()),
+    GetPage(name: AppRoutes.bottomNavBar, page: () => BottonNavBar(), binding: BottomNavBarBinding(), middlewares: [AuthMiddleware()]),
+    GetPage(name: AppRoutes.test, page: () => const Test(), ),
   ];
 }

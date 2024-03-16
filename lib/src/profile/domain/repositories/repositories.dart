@@ -1,3 +1,3 @@
 abstract class ProfileRepo {
-  Future<void> init();
+  Future<String> getProfileFromLocal();
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:marketna_app/shared/exception/dio_exception.dart';
 import 'package:marketna_app/shared/provider/api_result/api_result.dart';
@@ -29,17 +31,16 @@ class AuthRepoImpl extends AuthRepo {
       }
 
       final reaponse = await remoteDatabase.continueWithGoogle(data: data);
+      apiResult = ApiResult.success(
+          status: reaponse.data['status'],
+          message: reaponse.data['message'],
+          data: reaponse.data['data']['user']);
 
-        apiResult = ApiResult.success(
-            status: reaponse.data['status'],
-            message: reaponse.data['message'],
-            data: reaponse.data['data']['user']);
+      await localDatabase.saveProfile(profile:jsonEncode( reaponse.data['data']['user']));
+      await localDatabase.saveToken(token: reaponse.data['data']['token']);
 
-        await localDatabase.saveProfile(profile: reaponse.data['data']['user']);
-        await localDatabase.saveToken(token: reaponse.data['data']['token']);
-      
       return apiResult;
-} on DioException catch (ex) {
+    } on DioException catch (ex) {
       String message = ex.response != null
           ? ex.response!.data['message']
           : DioExceptionHandler.message(ex: ex);

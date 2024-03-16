@@ -1,4 +1,5 @@
 import 'package:get_storage/get_storage.dart';
+import 'package:marketna_app/generated/local_storage_keys.dart';
 import 'package:marketna_app/generated/strings.dart';
 
 abstract class HomeLocalDatabase {
@@ -18,7 +19,7 @@ class HomeLocalDatabaseImpl implements HomeLocalDatabase {
   
   @override
   Future<String> getAllProduct() async {
-    final allProduct = await storage.read(Strings.allProduct);
+    final allProduct = await storage.read(LocalStorageKeys.allProduct);
     if (allProduct == null) {
       return Future.value('');
     }
@@ -27,7 +28,7 @@ class HomeLocalDatabaseImpl implements HomeLocalDatabase {
   
   @override
   Future<String> getCategory() async{
-    final category = await storage.read(Strings.category);
+    final category = await storage.read(LocalStorageKeys.category);
     if (category == null) {
       return Future.value('');
     }
@@ -36,7 +37,7 @@ class HomeLocalDatabaseImpl implements HomeLocalDatabase {
   
   @override
   Future<String> getPremiumProduct() async {
-    final premiumProduct = await storage.read(Strings.premiumProduct);
+    final premiumProduct = await storage.read(LocalStorageKeys.premiumProduct);
     if (premiumProduct == null) {
       return Future.value('');
     }
@@ -45,19 +46,19 @@ class HomeLocalDatabaseImpl implements HomeLocalDatabase {
   
   @override
   Future<void> saveCategory({required String category})async {
-   await storage.write(Strings.category, category);
+   await storage.write(LocalStorageKeys.category, category);
     return Future.value();
   }
   
   @override
   Future<void> savePremiumProduct({required String premiumProduct}) async {
-    await storage.write(Strings.premiumProduct, premiumProduct);
+    await storage.write(LocalStorageKeys.premiumProduct, premiumProduct);
     return Future.value();
   }
   
   @override
   Future<void> savegetAllProduct( {required String allProduct}) async {
-    await storage.write(Strings.allProduct, allProduct);
+    await storage.write(LocalStorageKeys.allProduct, allProduct);
     return Future.value();
   }
 }

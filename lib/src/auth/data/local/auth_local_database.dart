@@ -5,7 +5,7 @@ import 'package:marketna_app/generated/strings.dart';
 abstract class AuthLocalDatabase {
 
   /// saveProfile
-  Future<void> saveProfile({required Map<String, dynamic> profile});
+  Future<void> saveProfile({required String  profile});
 
   /// saveToken
   Future<void> saveToken({required String token});
@@ -16,8 +16,8 @@ class AuthLocalDatabaseImpl implements AuthLocalDatabase {
 
 
   @override
-  Future<void> saveProfile({required Map<String, dynamic>  profile}) {
-    storage.write(Strings.profile, jsonEncode(profile));
+  Future<void> saveProfile({required String   profile}) {
+    storage.write(Strings.profile, profile);
     return Future.value();
   }
 

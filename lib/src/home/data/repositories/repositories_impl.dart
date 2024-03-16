@@ -17,20 +17,14 @@ class HomeRepoImpl implements HomeRepo {
     ApiResult apiResult;
     try {
       final response = await remoteDatabase.getAllProduct();
-      if (response.statusCode == 200) {
-        apiResult = ApiResult.success(
-          status: true,
-          message: response.data['message'],
-          data: response.data['data']['data'],
-        );
-        await localDatabase.savegetAllProduct(
-            allProduct: jsonEncode(response.data['data']));
-      } else {
-        apiResult = ApiResult.failure(
-          status: false,
-          message: response.data['message'],
-        );
-      }
+      apiResult = ApiResult.success(
+        status: true,
+        message: response.data['message'],
+        data: response.data['data']['data'],
+      );
+      await localDatabase.savegetAllProduct(
+          allProduct: jsonEncode(response.data['data']['data']));
+
       return apiResult;
     } on DioException catch (ex) {
       String message = ex.response != null
@@ -49,20 +43,13 @@ class HomeRepoImpl implements HomeRepo {
     ApiResult apiResult;
     try {
       final response = await remoteDatabase.getCategory();
-      if (response.statusCode == 200) {
-        apiResult = ApiResult.success(
-          status: true,
-          message: response.data['message'],
-          data: response.data['data'],
-        );
-        await localDatabase.saveCategory(
-            category: jsonEncode(response.data['data']));
-      } else {
-        apiResult = ApiResult.failure(
-          status: false,
-          message: response.data['message'],
-        );
-      }
+      apiResult = ApiResult.success(
+        status: true,
+        message: response.data['message'],
+        data: response.data['data'],
+      );
+      await localDatabase.saveCategory(
+          category: jsonEncode(response.data['data']));
       return apiResult;
     } on DioException catch (ex) {
       String message = ex.response != null
@@ -81,21 +68,15 @@ class HomeRepoImpl implements HomeRepo {
     ApiResult apiResult;
     try {
       final response = await remoteDatabase.getPremiumProduct();
-      if (response.statusCode == 200) {
-        apiResult = ApiResult.success(
-          status: true,
-          message: response.data['message'],
-          data: response.data['data'],
-        );
-        await localDatabase.savePremiumProduct(
-          premiumProduct: jsonEncode(response.data['data']),
-        );
-      } else {
-        apiResult = ApiResult.failure(
-          status: false,
-          message: response.data['message'],
-        );
-      }
+      apiResult = ApiResult.success(
+        status: true,
+        message: response.data['message'],
+        data: response.data['data'],
+      );
+      await localDatabase.savePremiumProduct(
+        premiumProduct: jsonEncode(response.data['data']),
+      );
+
       return apiResult;
     } on DioException catch (ex) {
       String message = ex.response != null

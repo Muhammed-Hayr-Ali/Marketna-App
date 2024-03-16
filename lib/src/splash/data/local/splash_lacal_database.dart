@@ -1,5 +1,5 @@
 import 'package:get_storage/get_storage.dart';
-import 'package:marketna_app/generated/strings.dart';
+import 'package:marketna_app/generated/local_storage_keys.dart';
 
 abstract class SplashLocalDatabase {
 
@@ -24,7 +24,7 @@ class SplashLocalDatabaseImpl implements SplashLocalDatabase {
 
   @override
   Future<String> retrieveToken() async {
-    final token = storage.read(Strings.token);
+    final token = await storage.read(LocalStorageKeys.token);
     if (token == null) {
       return Future.value('');
     }
@@ -33,7 +33,7 @@ class SplashLocalDatabaseImpl implements SplashLocalDatabase {
 
   @override
   Future<void> saveCurrentUser({required String profile}) async {
-    await storage.write(Strings.profile, profile);
+    await storage.write(LocalStorageKeys.profile, profile);
   }
 
 

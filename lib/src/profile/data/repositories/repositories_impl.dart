@@ -9,6 +9,9 @@ final ProfileLocalDatabase localDatabase;
 final ProfileRemoteDatabase remoteDatabase;
 
   ProfileRepoImpl({required this.localDatabase, required this.remoteDatabase});
+
   @override
-  Future<void> init() async {}
+  Future<String> getProfileFromLocal() async {
+    return await localDatabase.getProfile();
+  }
 }

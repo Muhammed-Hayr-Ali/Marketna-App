@@ -18,23 +18,23 @@ class SignupRemoteDatabaseImpl implements SignupRemoteDatabase {
 
   @override
   Future<Response> signup({required Map<String, dynamic> profile}) async {
+    FormData data = FormData.fromMap(profile);
+    if (profile['profile'] != '') {
+      MultipartFile photo = await MultipartFile.fromFile(profile['profile']!);
+      data.files.add(MapEntry('profile', photo));
+    }
 
-    // FormData data = FormData.fromMap(profile);
-    // if (profile['profile'] != '') {
-    //   MultipartFile photo = await MultipartFile.fromFile(profile['profile']!);
-    //   data.files.add(MapEntry('profile', photo));
-    // }
-
-    FormData data = FormData.fromMap({
-      "profile": profile['profile'] != null ? await MultipartFile.fromFile(profile['profile']) : null,
-      "name": profile['name'],
-      "email": profile['email'],
-      "password": profile['password'],
-      "phoneNumber": profile['phoneNumber'],
-      "gender": profile['gender'] ?? 'Unspecified',
-      "dateBirth": profile['dateBirth'],
-    });
-
+    // FormData data = FormData.fromMap({
+    //   "profile": profile['profile'] != null
+    //       ? await MultipartFile.fromFile(profile['profile'])
+    //       : null,
+    //   "name": profile['name'] ?? '',
+    //   "email": profile['email'] ?? '',
+    //   "password": profile['password'] ?? '',
+    //   "phoneNumber": profile['phoneNumber'] ?? '',
+    //   "gender": profile['gender'] ?? 'Unspecified',
+    //   "dateBirth": profile['dateBirth'] ?? '',
+    // });
 
     Response response = await dioRequest.request(
         requestMethod: RequestMethod.post(

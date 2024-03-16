@@ -28,7 +28,7 @@ class SigninRepoImpl implements SigninRepo {
         data: jsonEncode(response.data['data']),
       );
 
-      await localDatabase.saveProfile(profile: response.data['data']['user']);
+      await localDatabase.saveProfile(profile: jsonEncode(response.data['data']['user']));
       await localDatabase.saveToken(token: response.data['data']['token']);
       return apiResult;
     } on DioException catch (ex) {

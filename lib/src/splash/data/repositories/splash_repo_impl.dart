@@ -30,18 +30,17 @@ class SplashRepoImpl implements SplashRepo {
       apiResult = ApiResult.success(
         status: true,
         message: response.data['message'],
-        data: jsonEncode(response.data['data']),
+        data: response.data['data'],
       );
 
       await localDatabase.saveCurrentUser(
-        profile: jsonEncode(response.data['data']),
+        profile: jsonEncode(response.data['data']['user']),
       );
 
       return apiResult;
     } on DioException catch (ex) {
-      String message = ex.response != null
-          ? ex.response!.data['message']
-          : DioExceptionHandler.message(ex: ex);
+      String message = ex.response != null ?
+          ex.response!.data['message'] : DioExceptionHandler.message(ex: ex);
       apiResult = ApiResult.failure(
         status: false,
         message: message,

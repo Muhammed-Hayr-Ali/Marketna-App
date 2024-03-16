@@ -9,7 +9,6 @@ class SignupController extends GetxController {
   RxBool invaldPath = false.obs;
 //
   RxBool isLoading = false.obs;
-  RxBool isConfett = false.obs;
 
   final signUpUseCases = Get.find<SignUpUseCasesImpl>();
 
@@ -20,8 +19,8 @@ class SignupController extends GetxController {
       Future.delayed(const Duration(milliseconds: 500),
           () => Get.offAllNamed(AppRoutes.bottomNavBar));
     }, failure: (status, message) {
-      isConfett(false);
-      CustomNotification.showSnackbar(message: message);
+      print(message);
+      // CustomNotification.showSnackbar(message: message);
     });
     isLoading(false);
   }

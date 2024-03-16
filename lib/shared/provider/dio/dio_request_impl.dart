@@ -12,7 +12,10 @@ class DioRequestImpl implements DioRequest {
       receiveDataWhenStatusError: true,
       connectTimeout: const Duration(seconds: 20), // 20 seconds
       receiveTimeout: const Duration(seconds: 20),
-      contentType: 'application/json',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
     );
     dio = Dio(options);
   }

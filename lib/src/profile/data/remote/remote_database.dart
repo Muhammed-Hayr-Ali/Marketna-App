@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:marketna_app/generated/api_url.dart';
 import 'package:marketna_app/shared/provider/dio/dio_request.dart';
 import 'package:marketna_app/shared/provider/dio/dio_request_impl.dart';
 import 'package:marketna_app/shared/provider/request/request.dart';
@@ -8,11 +9,24 @@ abstract class ProfileRemoteDatabase {
   final DioRequest dioRequest;
   ProfileRemoteDatabase({required this.dioRequest});
 
-  Future<void> updateProfile({required Map<String, dynamic> profile});
+  /// update profile
+  Future<Response> updateProfile(
+      {required String token, required Map<String, dynamic> data});
 
+  /// get profile
   Future<Response> getProfile({required String token});
 
-  Future<void> deleteProfile();
+  /// updatePassword
+  Future<Response> updatePassword(
+      {required String token,
+      required String oldPassword,
+      required String newPassword});
+
+  /// logout
+  Future<Response> logout({required String token});
+
+  /// delete profile
+  Future<Response> deleteProfile({required String token});
 }
 
 class ProfileRemoteDatabaseImpl implements ProfileRemoteDatabase {
@@ -20,22 +34,71 @@ class ProfileRemoteDatabaseImpl implements ProfileRemoteDatabase {
   DioRequest get dioRequest => DioRequestImpl();
 
   @override
-  Future<void> updateProfile({required Map<String, dynamic> profile}) {
-    // TODO: implement updateProfile
-    throw UnimplementedError();
+  Future<Response> updateProfile(
+      {required String token, required Map<String, dynamic> data}) async {
+    FormData formData = FormData.fromMap(data);
+
+    if (data['profile'] != '') {
+      MultipartFile photo = await MultipartFile.fromFile(data['profile']!);
+      formData.files.add(MapEntry('profile', photo));
+    }
+
+    final Response response = await dioRequest.request(
+        requestMethod: RequestMethod.post(
+            requestParameters: RequestParameters(
+      url: ApiUrl.updateProfile,
+      data: formData,
+      authorization: {'Authorization': 'Bearer $token'},
+    )));
+    return response;
   }
 
   @override
   Future<Response> getProfile({required String token}) async {
     final Response response = await dioRequest.request(
-        requestMethod: const RequestMethod.get(
-            requestParameters: RequestParameters(url: '')));
+        requestMethod: RequestMethod.get(
+      requestParameters: RequestParameters(
+          url: ApiUrl.getProfile,
+          authorization: {'Authorization': 'Bearer $token'}),
+    ));
     return response;
   }
 
   @override
-  Future<void> deleteProfile() {
-    // TODO: implement deleteProfile
-    throw UnimplementedError();
+  Future<Response> updatePassword(
+      {required String token,
+      required String oldPassword,
+      required String newPassword}) async {
+    final Response response = await dioRequest.request(
+        requestMethod: RequestMethod.post(
+            requestParameters: RequestParameters(
+      url: ApiUrl.updatePassword,
+      data: {'oldPassword': oldPassword, 'newPassword': newPassword},
+      authorization: {'Authorization': 'Bearer $token'},
+    )));
+    return response;
+  }
+
+  @override
+  Future<Response> logout({required String token}) async {
+    final Response response = await dioRequest.request(
+        requestMethod: RequestMethod.get(
+            requestParameters: RequestParameters(
+      url: ApiUrl.logout,
+      authorization: {'Authorization': 'Bearer $token'},
+    )));
+    return response;
+  }
+
+  @override
+  Future<Response> deleteProfile({required String token}) async {
+    final Response response = await dioRequest.request(
+        requestMethod: RequestMethod.get(
+      requestParameters: RequestParameters(
+        url: ApiUrl.deleteProfile,
+        authorization: {'Authorization': 'Bearer $token'},
+      ),
+    ));
+    return response;
   }
 }

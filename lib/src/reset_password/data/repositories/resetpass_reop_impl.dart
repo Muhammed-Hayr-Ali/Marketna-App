@@ -13,7 +13,6 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
     ApiResult apiResult;
     try {
       final response = await remoteDatabase.resetpassword(email: email);
-
       apiResult = ApiResult.success(
         status: true,
         message: response.data['message'],
