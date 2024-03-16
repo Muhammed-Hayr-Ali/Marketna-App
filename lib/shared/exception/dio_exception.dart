@@ -1,26 +1,27 @@
 import 'package:dio/dio.dart';
+import 'package:marketna_app/shared/text/dio_exception_text.dart';
 
 class DioExceptionHandler {
   DioExceptionHandler._();
 
- static String message({required DioException ex}) {
+  static String message({required DioException ex}) {
     switch (ex.type) {
       case DioExceptionType.connectionError:
-        return 'Connection error';
+        return DioExceptionText.connectionError;
       case DioExceptionType.connectionTimeout:
-        return 'Connection Timeout';
+        return DioExceptionText.connectionTimeout;
       case DioExceptionType.sendTimeout:
-        return 'Send Timeout';
+        return DioExceptionText.sendTimeout;
       case DioExceptionType.receiveTimeout:
-        return 'Receive Timeout';
+        return DioExceptionText.receiveTimeout;
       case DioExceptionType.badResponse:
-        return 'Bad Response';
+        return DioExceptionText.badResponse;
       case DioExceptionType.cancel:
-        return 'Request Cancel';
+        return DioExceptionText.requestCancel;
       case DioExceptionType.unknown:
-        return 'Unknown Error';
+        return DioExceptionText.unknownError;
       default:
-        return 'Oops something went wrong';
+        return DioExceptionText.defaultError;
     }
   }
 }

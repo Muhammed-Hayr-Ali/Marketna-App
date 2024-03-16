@@ -1,47 +1,48 @@
 import 'package:get/get.dart';
+import 'package:marketna_app/shared/text/validator_text.dart';
 
 class Validator {
   static String? validateName(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Name can\'t be empty'.tr;
+      return ValidatorText.nameEmpty.tr;
     }
     if (value.length < 3) {
-      return 'Name must be at least 3 characters'.tr;
+      return ValidatorText.nameMin.tr;
     }
     if (value.length > 20) {
-      return 'Name must be less than 20 characters'.tr;
+      return ValidatorText.nameMax.tr;
     }
     return null;
   }
 
   static String? validatePhoneNumber(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Phone number can\'t be empty'.tr;
+      return ValidatorText.phoneEmpty.tr;
     }
     if (!RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)').hasMatch(value)) {
-      return 'Enter a valid phone number'.tr;
+      return ValidatorText.phoneInvalid.tr;
     }
     return null;
   }
 
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Email can\'t be empty'.tr;
+      return ValidatorText.emailEmpty.tr;
     }
     if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(value)) {
-      return 'Enter a valid email'.tr;
+      return ValidatorText.emailInvalid.tr;
     }
     return null;
   }
 
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Password can\'t be empty'.tr;
+      return ValidatorText.passwordEmpty.tr;
     }
-    if (value.length < 6) {
-      return 'Password must be at least 6 characters'.tr;
+    if (value.length < 8) {
+      return ValidatorText.passwordMin.tr;
     }
     return null;
   } 
@@ -49,13 +50,13 @@ class Validator {
   
    static String? validateconfirmPassword(String? value, String? pass) {
     if (value == null || value.isEmpty) {
-      return 'Password can\'t be empty'.tr;
+      return ValidatorText.passwordEmpty.tr;
     }
     if (value.length < 6) {
-      return 'Password must be at least 6 characters'.tr;
+      return ValidatorText.passwordMin.tr;
     }
     if(value != pass){
-      return 'Password doesn\'t match'.tr;
+      return ValidatorText.passwordConfirm.tr;
     }
     return null;
   }

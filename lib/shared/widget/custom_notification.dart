@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:marketna_app/shared/widget/custom_text.dart';
 
 class CustomNotification {
   CustomNotification._();
 
   static showToast({String? title, required String message}) {
     Fluttertoast.showToast(
-        msg: message.tr,
+        msg: message,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
@@ -19,9 +20,9 @@ class CustomNotification {
       '',
       '',
       titleText: const SizedBox(),
-      messageText: Text(
-        message.tr,
-        style: const TextStyle(fontSize: 12.0, height: 1.5),
+      messageText: CustomText(
+        message,
+       fontSize: 12.0
       ),
       borderRadius: 4.0,
       snackPosition: SnackPosition.TOP,
