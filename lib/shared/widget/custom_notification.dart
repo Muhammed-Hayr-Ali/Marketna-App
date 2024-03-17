@@ -24,7 +24,7 @@ class CustomNotification {
       borderRadius: 4.0,
       snackPosition: SnackPosition.TOP,
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 16),
-      duration: const Duration(minutes: 4),
+      duration: const Duration(seconds: 2),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:marketna_app/src/auth/data/services/auth_service.dart';
 import 'package:marketna_app/src/home/data/services/home_services.dart';
+import 'package:marketna_app/src/product_details/data/services/producat_details_service.dart';
 import 'package:marketna_app/src/profile/data/services/profile_services.dart';
 import 'package:marketna_app/src/reset_password/data/services/reset_pass_service.dart';
 import 'package:marketna_app/src/sign_in/data/services/signin_service.dart';
@@ -19,5 +20,6 @@ Future<void> initServices() async {
   await Get.putAsync(() => UpdatePassService().init());
   await Get.putAsync(() => HomeServices().init());
   await Get.putAsync(() => ProfileServices().init());
+  await Get.putAsync(() => ProductDetailsService().init());
 
 }

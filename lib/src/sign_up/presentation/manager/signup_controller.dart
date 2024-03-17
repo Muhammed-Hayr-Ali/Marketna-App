@@ -18,7 +18,6 @@ class SignupController extends GetxController {
       Future.delayed(const Duration(milliseconds: 500),
           () => Get.offAllNamed(AppRoutes.bottomNavBar));
     }, failure: (status, message) {
-      print(message);
       // CustomNotification.showSnackbar(message: message);
     });
     isLoading(false);

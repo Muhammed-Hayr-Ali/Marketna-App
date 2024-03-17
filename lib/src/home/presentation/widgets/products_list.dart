@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:marketna_app/generated/app_colors.dart';
+import 'package:marketna_app/routes/app_pages.dart';
 import 'package:marketna_app/shared/converter/rating_converter.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 import 'package:marketna_app/shared/widget/ink.dart';
@@ -17,6 +18,9 @@ class ProductsList extends StatelessWidget {
 
   final HomeScreenController _ = Get.find<HomeScreenController>();
 
+  void getToProductDetails({required int id}) {
+    Get.toNamed(AppRoutes.productDetails, arguments: id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +35,7 @@ class ProductsList extends StatelessWidget {
         crossAxisSpacing: 18,
         itemBuilder: (context, index) {
           return card(
+            onTap: () => getToProductDetails(id: _.allProductList[index].id!),
             product: _.allProductList[index],
           );
         },

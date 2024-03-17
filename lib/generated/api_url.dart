@@ -1,8 +1,6 @@
-class ApiUrl{
-
-
-    /// API URl
-  static const String baseUrl = 'http://192.168.74.175:8000';
+class ApiUrl {
+  /// API URl
+  static const String baseUrl = 'http://192.168.0.101:8000';
   static const String checkUser = '/api/v1/auth/checkUser';
   static const String signIn = '/api/v1/auth/signIn';
   static const String signUp = '/api/v1/auth/signUp';
@@ -15,12 +13,8 @@ class ApiUrl{
   static const String logout = '/api/v1/auth/logout';
   static const String deleteProfile = '/api/v1/auth/delete';
 
-
   static const String getPremiumProducts = '/api/v1/product/getPremiumProducts';
   static const String getAllProducts = '/api/v1/product/getAllProducts';
   static const String getCategory = '/api/v1/Category/getAllCategory';
-
-
-
-
+  static const String getProductDetails = '/api/v1/product/getProductDetails/';
 }
