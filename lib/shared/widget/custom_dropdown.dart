@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marketna_app/generated/app_colors.dart';
-import 'package:marketna_app/generated/strings.dart';
+import 'package:marketna_app/constants/app_colors.dart';
+import 'package:marketna_app/constants/strings.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 
 class CustomDropdown extends StatefulWidget {
@@ -57,7 +57,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
                 child: CustomText(
                   widget.label,
                   fontSize: 12,
-                  color: AppColors.grayColor,
+                  color: AppColors.gray,
                 ),
               )
             : const SizedBox.shrink(),
@@ -85,7 +85,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
                               fontWeight: FontWeight.bold,
                               color: e == widget.value
                                   ? Colors.grey.shade400
-                                  : AppColors.grayColor),
+                                  : AppColors.gray),
                         ),
                       ))
                   .toList(),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marketna_app/generated/app_colors.dart';
+import 'package:marketna_app/constants/app_colors.dart';
 
 class Inkk extends StatelessWidget {
   final Widget child;

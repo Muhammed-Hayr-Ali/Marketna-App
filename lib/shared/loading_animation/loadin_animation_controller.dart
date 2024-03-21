@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:marketna_app/generated/assets.dart';
+import 'package:marketna_app/constants/assets.dart';
 import 'package:rive/rive.dart';
 
 class LoadingAnimationController extends GetxController {

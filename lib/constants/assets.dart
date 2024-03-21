@@ -1,5 +1,4 @@
 class Assets {
-  Assets._();
   static const String svgLogo = 'assets/svg/logo.svg';
 
 

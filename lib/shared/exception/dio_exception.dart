@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:marketna_app/shared/text/dio_exception_text.dart';
+import 'package:marketna_app/constants/text/dio_exception_text.dart';
 
 class DioExceptionHandler {
   DioExceptionHandler._();

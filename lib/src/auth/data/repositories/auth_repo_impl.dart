@@ -13,10 +13,11 @@ class AuthRepoImpl extends AuthRepo {
   final AuthRemoteDatabase remoteDatabase;
   final MyGoogleSignInAccount googleSignIn;
 
-  AuthRepoImpl(
-      {required this.googleSignIn,
-      required this.localDatabase,
-      required this.remoteDatabase});
+  AuthRepoImpl({
+    required this.googleSignIn,
+    required this.localDatabase,
+    required this.remoteDatabase,
+  });
 
   @override
   Future<ApiResult> continueWithGoogle() async {
@@ -36,8 +37,10 @@ class AuthRepoImpl extends AuthRepo {
           message: reaponse.data['message'],
           data: reaponse.data['data']['user']);
 
-      await localDatabase.saveProfile(profile:jsonEncode( reaponse.data['data']['user']));
+      await localDatabase.saveProfile(
+          profile: jsonEncode(reaponse.data['data']['user']));
       await localDatabase.saveToken(token: reaponse.data['data']['token']);
+
 
       return apiResult;
     } on DioException catch (ex) {

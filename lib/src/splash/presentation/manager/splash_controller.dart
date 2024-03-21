@@ -25,7 +25,8 @@ class SplashController extends GetxController {
           hasError.value = true;
           errorMessage.value = message;
         } else {
-          Get.offAllNamed(AppRoutes.auth);
+          Future.delayed(const Duration(seconds: 3),
+              () => Get.offAllNamed(AppRoutes.auth));
         }
       },
     );
@@ -35,7 +36,7 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     Future.delayed(
-        const Duration(milliseconds: 3500), () => checkExistsToken());
+        const Duration(milliseconds: 3000), () => checkExistsToken());
     super.onInit();
   }
 

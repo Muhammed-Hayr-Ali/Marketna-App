@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:marketna_app/shared/provider/api_result/api_result.dart';
 import 'package:marketna_app/shared/widget/custom_notification.dart';
 import 'package:marketna_app/src/home/domain/entities/category/category_model.dart';
+import 'package:marketna_app/src/home/domain/entities/current_user/current_user.dart';
 import 'package:marketna_app/src/home/domain/entities/product/product_model.dart';
 import 'package:marketna_app/src/home/domain/use_cases/home_use_cases.dart';
 
@@ -9,13 +12,14 @@ class HomeScreenController extends GetxController {
   RxList<ProductModel> prmiumProductList = <ProductModel>[].obs;
   RxList<ProductModel> allProductList = <ProductModel>[].obs;
   RxList<CategoryModel> catygoryList = <CategoryModel>[].obs;
+  Rx<CurrentUser> currentUser = CurrentUser.empty().obs;
   final usecases = Get.find<HomeUseCasesImpl>();
-  @override
-  void onInit() {
-    super.onInit();
-    getPremiumProduct();
-    getCategory();
-    getAllProduct();
+
+  Future<void> getCurrentUser() async {
+    final data = await usecases.getCurrentUser();
+    if (data != '') {
+      currentUser.value = CurrentUser.fromJson(jsonDecode(data));
+    }
   }
 
   Future<void> getPremiumProduct() async {
@@ -46,5 +50,11 @@ class HomeScreenController extends GetxController {
     }, failure: (status, message) {
       CustomNotification.showSnackbar(message: message);
     });
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    getCurrentUser();
   }
 }

@@ -1,6 +1,8 @@
 import 'package:marketna_app/translations/language/english/keys/api_exception.dart';
 import 'package:marketna_app/translations/language/english/keys/date_picker.dart';
 import 'package:marketna_app/translations/language/english/keys/dio_exception.dart';
+import 'package:marketna_app/translations/language/english/keys/home_screen.dart';
+import 'package:marketna_app/translations/language/english/keys/product_details.dart';
 import 'package:marketna_app/translations/language/english/keys/reser_pass_screen.dart';
 import 'package:marketna_app/translations/language/english/keys/signup_screen.dart';
 import 'package:marketna_app/translations/language/english/keys/auth_screen.dart';
@@ -21,5 +23,7 @@ class EnglishTranslations {
         ...DioExceptionTranslations().keys,
         ...ApiExceptionTranslations().keys,
         ...ValidatorTranslations().keys,
+        ...HomeScreenTranslations().keys,
+        ...ProductDetailsScreenTranslations().keys,
       };
 }

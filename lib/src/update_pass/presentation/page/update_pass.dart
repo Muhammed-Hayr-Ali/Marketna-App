@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
-import 'package:marketna_app/generated/app_colors.dart';
-import 'package:marketna_app/shared/text/update_pass_text.dart';
+import 'package:marketna_app/constants/app_colors.dart';
+import 'package:marketna_app/constants/text/update_pass_text.dart';
 import 'package:marketna_app/shared/validator/validator.dart';
 import 'package:marketna_app/shared/widget/custom_button.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
@@ -72,7 +72,7 @@ class UpdatePassScreen extends StatelessWidget {
                   child: CustomText(
                     UpdatePassText.resetCode,
                     fontSize: 12,
-                    color: AppColors.grayColor,
+                    color: AppColors.gray,
                   ),
                 ),
                 Padding(

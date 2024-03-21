@@ -44,9 +44,6 @@ mixin _$ProductDetailsModel {
   Status? get status => throw _privateConstructorUsedError;
   Unit? get unit => throw _privateConstructorUsedError;
   Author? get user => throw _privateConstructorUsedError;
-  List<Images> get images => throw _privateConstructorUsedError;
-  List<Comments> get comments => throw _privateConstructorUsedError;
-  List<Rating> get rating => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -84,10 +81,7 @@ abstract class $ProductDetailsModelCopyWith<$Res> {
       Level? level,
       Status? status,
       Unit? unit,
-      Author? user,
-      List<Images> images,
-      List<Comments> comments,
-      List<Rating> rating});
+      Author? user});
 
   $CategoryCopyWith<$Res>? get category;
   $LevelCopyWith<$Res>? get level;
@@ -133,9 +127,6 @@ class _$ProductDetailsModelCopyWithImpl<$Res, $Val extends ProductDetailsModel>
     Object? status = freezed,
     Object? unit = freezed,
     Object? user = freezed,
-    Object? images = null,
-    Object? comments = null,
-    Object? rating = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -234,18 +225,6 @@ class _$ProductDetailsModelCopyWithImpl<$Res, $Val extends ProductDetailsModel>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as Author?,
-      images: null == images
-          ? _value.images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<Images>,
-      comments: null == comments
-          ? _value.comments
-          : comments // ignore: cast_nullable_to_non_nullable
-              as List<Comments>,
-      rating: null == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as List<Rating>,
     ) as $Val);
   }
 
@@ -342,10 +321,7 @@ abstract class _$$ProductDetailsModelImplCopyWith<$Res>
       Level? level,
       Status? status,
       Unit? unit,
-      Author? user,
-      List<Images> images,
-      List<Comments> comments,
-      List<Rating> rating});
+      Author? user});
 
   @override
   $CategoryCopyWith<$Res>? get category;
@@ -394,9 +370,6 @@ class __$$ProductDetailsModelImplCopyWithImpl<$Res>
     Object? status = freezed,
     Object? unit = freezed,
     Object? user = freezed,
-    Object? images = null,
-    Object? comments = null,
-    Object? rating = null,
   }) {
     return _then(_$ProductDetailsModelImpl(
       id: null == id
@@ -495,18 +468,6 @@ class __$$ProductDetailsModelImplCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as Author?,
-      images: null == images
-          ? _value._images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<Images>,
-      comments: null == comments
-          ? _value._comments
-          : comments // ignore: cast_nullable_to_non_nullable
-              as List<Comments>,
-      rating: null == rating
-          ? _value._rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as List<Rating>,
     ));
   }
 }
@@ -538,14 +499,8 @@ class _$ProductDetailsModelImpl extends _ProductDetailsModel {
       this.level,
       this.status,
       this.unit,
-      this.user,
-      final List<Images> images = const <Images>[],
-      final List<Comments> comments = const <Comments>[],
-      final List<Rating> rating = const <Rating>[]})
-      : _images = images,
-        _comments = comments,
-        _rating = rating,
-        super._();
+      this.user})
+      : super._();
 
   factory _$ProductDetailsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductDetailsModelImplFromJson(json);
@@ -599,36 +554,10 @@ class _$ProductDetailsModelImpl extends _ProductDetailsModel {
   final Unit? unit;
   @override
   final Author? user;
-  final List<Images> _images;
-  @override
-  @JsonKey()
-  List<Images> get images {
-    if (_images is EqualUnmodifiableListView) return _images;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_images);
-  }
-
-  final List<Comments> _comments;
-  @override
-  @JsonKey()
-  List<Comments> get comments {
-    if (_comments is EqualUnmodifiableListView) return _comments;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_comments);
-  }
-
-  final List<Rating> _rating;
-  @override
-  @JsonKey()
-  List<Rating> get rating {
-    if (_rating is EqualUnmodifiableListView) return _rating;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_rating);
-  }
 
   @override
   String toString() {
-    return 'ProductDetailsModel(id: $id, productName: $productName, description: $description, thumbnailImage: $thumbnailImage, price: $price, discount: $discount, code: $code, availableQuantity: $availableQuantity, minimumQuantity: $minimumQuantity, expirationDate: $expirationDate, view: $view, category_id: $category_id, level_id: $level_id, status_id: $status_id, user_id: $user_id, unit_id: $unit_id, quantity: $quantity, created_at: $created_at, updated_at: $updated_at, category: $category, level: $level, status: $status, unit: $unit, user: $user, images: $images, comments: $comments, rating: $rating)';
+    return 'ProductDetailsModel(id: $id, productName: $productName, description: $description, thumbnailImage: $thumbnailImage, price: $price, discount: $discount, code: $code, availableQuantity: $availableQuantity, minimumQuantity: $minimumQuantity, expirationDate: $expirationDate, view: $view, category_id: $category_id, level_id: $level_id, status_id: $status_id, user_id: $user_id, unit_id: $unit_id, quantity: $quantity, created_at: $created_at, updated_at: $updated_at, category: $category, level: $level, status: $status, unit: $unit, user: $user)';
   }
 
   @override
@@ -673,10 +602,7 @@ class _$ProductDetailsModelImpl extends _ProductDetailsModel {
             (identical(other.level, level) || other.level == level) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.unit, unit) || other.unit == unit) &&
-            (identical(other.user, user) || other.user == user) &&
-            const DeepCollectionEquality().equals(other._images, _images) &&
-            const DeepCollectionEquality().equals(other._comments, _comments) &&
-            const DeepCollectionEquality().equals(other._rating, _rating));
+            (identical(other.user, user) || other.user == user));
   }
 
   @JsonKey(ignore: true)
@@ -706,10 +632,7 @@ class _$ProductDetailsModelImpl extends _ProductDetailsModel {
         level,
         status,
         unit,
-        user,
-        const DeepCollectionEquality().hash(_images),
-        const DeepCollectionEquality().hash(_comments),
-        const DeepCollectionEquality().hash(_rating)
+        user
       ]);
 
   @JsonKey(ignore: true)
@@ -752,10 +675,7 @@ abstract class _ProductDetailsModel extends ProductDetailsModel {
       final Level? level,
       final Status? status,
       final Unit? unit,
-      final Author? user,
-      final List<Images> images,
-      final List<Comments> comments,
-      final List<Rating> rating}) = _$ProductDetailsModelImpl;
+      final Author? user}) = _$ProductDetailsModelImpl;
   _ProductDetailsModel._() : super._();
 
   factory _ProductDetailsModel.fromJson(Map<String, dynamic> json) =
@@ -809,12 +729,6 @@ abstract class _ProductDetailsModel extends ProductDetailsModel {
   Unit? get unit;
   @override
   Author? get user;
-  @override
-  List<Images> get images;
-  @override
-  List<Comments> get comments;
-  @override
-  List<Rating> get rating;
   @override
   @JsonKey(ignore: true)
   _$$ProductDetailsModelImplCopyWith<_$ProductDetailsModelImpl> get copyWith =>

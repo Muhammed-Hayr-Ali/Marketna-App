@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:marketna_app/shared/text/validator_text.dart';
+import 'package:marketna_app/constants/text/validator_text.dart';
 
 class Validator {
   static String? validateName(String? value) {

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:marketna_app/generated/app_colors.dart';
-import 'package:marketna_app/generated/assets.dart';
-import 'package:marketna_app/generated/text.dart';
+import 'package:marketna_app/constants/app_colors.dart';
+import 'package:marketna_app/constants/assets.dart';
 import 'package:marketna_app/routes/app_pages.dart';
-import 'package:marketna_app/shared/text/signup_text.dart';
+import 'package:marketna_app/constants/text/signup_text.dart';
 import 'package:marketna_app/shared/validator/validator.dart';
 import 'package:marketna_app/shared/widget/custom_avatar.dart';
 import 'package:marketna_app/shared/widget/custom_button.dart';
@@ -28,7 +27,7 @@ class SignupScreen extends StatelessWidget {
   final _password = TextEditingController();
   final _phoneNumber = TextEditingController();
   final _dateBirth = TextEditingController();
-  final _gender = TextEditingController(text: TEXT.unspecified);
+  final _gender = TextEditingController(text: SignUpText.unspecified);
 
   Future<void> login() async {
     if (_.isLoading.value) return;

@@ -1,8 +1,8 @@
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marketna_app/generated/app_colors.dart';
-import 'package:marketna_app/shared/text/date_picker.dart';
+import 'package:marketna_app/constants/app_colors.dart';
+import 'package:marketna_app/constants/text/date_picker.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 
 class CustomDatePicker extends StatefulWidget {
@@ -87,7 +87,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                 child: CustomText(
                   widget.label,
                   fontSize: 12,
-                  color: AppColors.grayColor,
+                  color: AppColors.gray,
                 ),
               )
             : const SizedBox.shrink(),
@@ -123,7 +123,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                           child: Icon(
                             Icons.cancel,
                             size: 16,
-                            color: AppColors.grayColor,
+                            color: AppColors.gray,
                           ),
                         )
                       : null,

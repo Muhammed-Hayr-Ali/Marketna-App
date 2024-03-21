@@ -1,4 +1,4 @@
-import 'package:marketna_app/shared/text/update_pass_text.dart';
+import 'package:marketna_app/constants/text/update_pass_text.dart';
 
 class UpdatePassScreenTranslations {
   Map<String, String> get keys => {

@@ -7,4 +7,5 @@ class DioExceptionText {
   static String requestCancel = 'Request Cancel';
   static String unknownError = 'Unknown Error';
   static String defaultError = 'Oops something went wrong';
+  static String logoutSuccess = 'logout success';
 }

@@ -1,4 +1,4 @@
-import 'package:marketna_app/shared/text/date_picker.dart';
+import 'package:marketna_app/constants/text/date_picker.dart';
 
 class DatePickerTranslations {
   Map<String, String> get keys => {

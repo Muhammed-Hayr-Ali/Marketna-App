@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marketna_app/generated/app_colors.dart';
-import 'package:marketna_app/generated/text.dart';
+import 'package:marketna_app/constants/app_colors.dart';
+import 'package:marketna_app/constants/text/home_text.dart';
+import 'package:marketna_app/shared/converter/string_converter.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 import 'package:marketna_app/shared/widget/ink.dart';
 import 'package:marketna_app/src/home/presentation/manager/home_controller.dart';
@@ -28,7 +30,7 @@ class Category extends StatelessWidget {
       () => _.catygoryList.isEmpty
           ? CategoryPlaceholder()
           : SizedBox(
-              height: 68,
+              height: 150,
               width: double.infinity,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -38,48 +40,57 @@ class Category extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CustomText(TEXT.categories,
-                            color: AppColors.grayColor, fontSize: 18),
+                        const CustomText(
+                          HomeText.categories,
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
                         Inkk(
                           onTap: seeAll,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 4),
-                            child: CustomText(TEXT.seeAll,
-                                color: AppColors.primaryColor, fontSize: 16),
+                            child: CustomText(
+                              HomeText.seeAll,
+                              color: AppColors.primaryColor,
+                              fontSize: 12,
+                            ),
                           ),
                         )
                       ],
                     ),
                   ),
-                  Flexible(
+                  SizedBox(
+                    height: 120,
                     child: ListView.builder(
                       shrinkWrap: false,
                       scrollDirection: Axis.horizontal,
                       itemCount: _.catygoryList.length,
                       itemBuilder: (context, index) => Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Inkk(
-                          onTap: () =>
-                              getToCategory(id: _.catygoryList[index].id!),
-                          child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 8),
-                              decoration: BoxDecoration(
-                                  color: index == 0
-                                      ? AppColors.primaryColor
-                                      : Colors.transparent,
-                                  border: Border.all(
-                                      color: AppColors.primaryColor, width: 1),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: index != 0
-                                  ? CustomText(
-                                      _.catygoryList[index].name?.tr ?? '',
-                                      color: AppColors.grayColor,
-                                      fontSize: 14)
-                                  : CustomText(
-                                      _.catygoryList[index].name?.tr ?? '',
-                                      color: Colors.white,
-                                      fontSize: 14)),
+                        child: Column(
+                          children: [
+                            Inkk(
+                                radius: 999,
+                                onTap: () => getToCategory(
+                                    id: _.catygoryList[index].id!),
+                                child: Container(
+                                  height: 60,
+                                  width: 60,
+                                  color: const Color(0xfff6f6f6),
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: CachedNetworkImage(
+                                    imageUrl: StringConvrter.url(
+                                      url: _.catygoryList[index].image ?? '',
+                                    ),
+                                    color: AppColors.primaryColor,
+                                  ),
+                                )),
+                            CustomText(
+                              _.catygoryList[index].name,
+                              fontSize: 12,
+                            )
+                          ],
                         ),
                       ),
                     ),

@@ -24,7 +24,8 @@ mixin _$Comments {
   String get comment => throw _privateConstructorUsedError;
   int get user_id => throw _privateConstructorUsedError;
   int get product_id => throw _privateConstructorUsedError;
-  User? get user => throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
+  String get created_at => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,9 +38,15 @@ abstract class $CommentsCopyWith<$Res> {
   factory $CommentsCopyWith(Comments value, $Res Function(Comments) then) =
       _$CommentsCopyWithImpl<$Res, Comments>;
   @useResult
-  $Res call({int id, String comment, int user_id, int product_id, User? user});
+  $Res call(
+      {int id,
+      String comment,
+      int user_id,
+      int product_id,
+      User user,
+      String created_at});
 
-  $UserCopyWith<$Res>? get user;
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -59,7 +66,8 @@ class _$CommentsCopyWithImpl<$Res, $Val extends Comments>
     Object? comment = null,
     Object? user_id = null,
     Object? product_id = null,
-    Object? user = freezed,
+    Object? user = null,
+    Object? created_at = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -78,21 +86,21 @@ class _$CommentsCopyWithImpl<$Res, $Val extends Comments>
           ? _value.product_id
           : product_id // ignore: cast_nullable_to_non_nullable
               as int,
-      user: freezed == user
+      user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as User,
+      created_at: null == created_at
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get user {
-    if (_value.user == null) {
-      return null;
-    }
-
-    return $UserCopyWith<$Res>(_value.user!, (value) {
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value) as $Val);
     });
   }
@@ -106,10 +114,16 @@ abstract class _$$CommentsImplCopyWith<$Res>
       __$$CommentsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String comment, int user_id, int product_id, User? user});
+  $Res call(
+      {int id,
+      String comment,
+      int user_id,
+      int product_id,
+      User user,
+      String created_at});
 
   @override
-  $UserCopyWith<$Res>? get user;
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -127,7 +141,8 @@ class __$$CommentsImplCopyWithImpl<$Res>
     Object? comment = null,
     Object? user_id = null,
     Object? product_id = null,
-    Object? user = freezed,
+    Object? user = null,
+    Object? created_at = null,
   }) {
     return _then(_$CommentsImpl(
       id: null == id
@@ -146,10 +161,14 @@ class __$$CommentsImplCopyWithImpl<$Res>
           ? _value.product_id
           : product_id // ignore: cast_nullable_to_non_nullable
               as int,
-      user: freezed == user
+      user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as User,
+      created_at: null == created_at
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -162,7 +181,8 @@ class _$CommentsImpl implements _Comments {
       this.comment = '',
       required this.user_id,
       required this.product_id,
-      this.user});
+      required this.user,
+      required this.created_at});
 
   factory _$CommentsImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommentsImplFromJson(json);
@@ -177,11 +197,13 @@ class _$CommentsImpl implements _Comments {
   @override
   final int product_id;
   @override
-  final User? user;
+  final User user;
+  @override
+  final String created_at;
 
   @override
   String toString() {
-    return 'Comments(id: $id, comment: $comment, user_id: $user_id, product_id: $product_id, user: $user)';
+    return 'Comments(id: $id, comment: $comment, user_id: $user_id, product_id: $product_id, user: $user, created_at: $created_at)';
   }
 
   @override
@@ -194,13 +216,15 @@ class _$CommentsImpl implements _Comments {
             (identical(other.user_id, user_id) || other.user_id == user_id) &&
             (identical(other.product_id, product_id) ||
                 other.product_id == product_id) &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, comment, user_id, product_id, user);
+  int get hashCode => Object.hash(
+      runtimeType, id, comment, user_id, product_id, user, created_at);
 
   @JsonKey(ignore: true)
   @override
@@ -222,7 +246,8 @@ abstract class _Comments implements Comments {
       final String comment,
       required final int user_id,
       required final int product_id,
-      final User? user}) = _$CommentsImpl;
+      required final User user,
+      required final String created_at}) = _$CommentsImpl;
 
   factory _Comments.fromJson(Map<String, dynamic> json) =
       _$CommentsImpl.fromJson;
@@ -236,7 +261,9 @@ abstract class _Comments implements Comments {
   @override
   int get product_id;
   @override
-  User? get user;
+  User get user;
+  @override
+  String get created_at;
   @override
   @JsonKey(ignore: true)
   _$$CommentsImplCopyWith<_$CommentsImpl> get copyWith =>

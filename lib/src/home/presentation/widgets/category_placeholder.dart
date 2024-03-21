@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:marketna_app/generated/app_colors.dart';
-import 'package:marketna_app/generated/text.dart';
+import 'package:marketna_app/constants/app_colors.dart';
+import 'package:marketna_app/constants/text/home_text.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 import 'package:marketna_app/shared/widget/widget_placeholder.dart';
 
@@ -12,7 +12,7 @@ class CategoryPlaceholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 68,
+      height: 64,
       width: double.infinity,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -22,10 +22,10 @@ class CategoryPlaceholder extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CustomText(TEXT.categories,
-                    color: AppColors.grayColor, fontSize: 18),
-                CustomText(TEXT.seeAll,
-                    color: AppColors.primaryColor, fontSize: 16),
+                const CustomText(HomeText.categories,
+                    color: Colors.black, fontSize: 14),
+                CustomText(HomeText.seeAll,
+                    color: AppColors.primaryColor, fontSize: 12),
               ],
             ),
           ),

@@ -16,7 +16,6 @@ class SignupRepoImpl implements SignupRepo {
   @override
   Future<ApiResult> signup({required Map<String, dynamic> profile}) async {
     ApiResult apiResult;
-
     try {
       final response = await remoteDatabase.signup(profile: profile);
       apiResult = ApiResult.success(
@@ -25,7 +24,8 @@ class SignupRepoImpl implements SignupRepo {
         data: jsonEncode(response.data['data']),
       );
 
-      await localDatabase.saveProfile(profile: jsonEncode(response.data['data']['user']));
+      await localDatabase.saveProfile(
+          profile: jsonEncode(response.data['data']['user']));
       await localDatabase.saveToken(token: response.data['data']['token']);
 
       return apiResult;

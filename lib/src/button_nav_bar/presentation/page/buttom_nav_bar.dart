@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:marketna_app/generated/assets.dart';
+import 'package:marketna_app/constants/assets.dart';
 import 'package:marketna_app/src/button_nav_bar/presentation/manager/bottom_nav_bar_controller.dart';
 import 'package:marketna_app/src/home/presentation/page/home.dart';
 import 'package:marketna_app/src/profile/presentation/page/screen.dart';
@@ -10,7 +10,7 @@ class BottonNavBar extends StatelessWidget {
   BottonNavBar({super.key});
 
   final List<Widget> pages = [
-    const HomeScreen(),
+     HomeScreen(),
     const Center(child: Text('Search')),
     const Center(child: Text('Notification')),
     ProfileScreen(),
@@ -19,7 +19,6 @@ class BottonNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: GetBuilder<BottomNavBarController>(
           builder: (_) => pages[_.currentIndex]),
       bottomNavigationBar: SizedBox(

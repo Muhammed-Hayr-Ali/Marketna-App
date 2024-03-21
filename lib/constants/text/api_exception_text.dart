@@ -101,6 +101,10 @@ static String productDetailsRetrieved = 'Product Details retrieved successfully'
 static String noProducts = 'No products found';
 static String premiumProductsRetrieved = 'Premium Products retrieved successfully';
 static String allProductsRetrieved = 'All Products retrieved successfully';
+static String dataNotFound = 'The data were not found';
+static String dataRetrieved = 'Data retrieved successfully';
+
+
 
 
 }

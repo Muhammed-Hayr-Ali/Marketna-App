@@ -1,4 +1,4 @@
-import 'package:marketna_app/shared/text/reset_pass_text.dart';
+import 'package:marketna_app/constants/text/reset_pass_text.dart';
 
 class ReserPassScreenTranslations {
   Map<String, String> get keys => {

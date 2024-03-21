@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:marketna_app/generated/app_colors.dart';
-import 'package:marketna_app/generated/strings.dart';
+import 'package:marketna_app/constants/app_colors.dart';
+import 'package:marketna_app/constants/strings.dart';
 import 'package:marketna_app/shared/theme/bottom_navigation_bar_theme.dart';
 import 'package:marketna_app/shared/theme/input_decoration_theme.dart';
 
@@ -24,7 +24,7 @@ class AppThemeData {
       ),
       colorScheme: ColorScheme.fromSeed(
         brightness: Brightness.light,
-        seedColor: AppColors.blackColor,
+        seedColor: AppColors.black,
         primary: AppColors.primaryColor,
       ),
       cardTheme: CardTheme(

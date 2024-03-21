@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marketna_app/generated/app_colors.dart';
+import 'package:marketna_app/constants/app_colors.dart';
 import 'package:marketna_app/routes/app_pages.dart';
 import 'package:marketna_app/shared/login_animation/login_animation.dart';
 import 'package:marketna_app/shared/login_animation/login_animation_controller.dart';
-import 'package:marketna_app/shared/text/signin_text.dart';
+import 'package:marketna_app/constants/text/signin_text.dart';
 import 'package:marketna_app/shared/validator/validator.dart';
 import 'package:marketna_app/shared/widget/custom_button.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';

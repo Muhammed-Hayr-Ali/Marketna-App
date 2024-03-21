@@ -1,4 +1,4 @@
-import 'package:marketna_app/shared/text/validator_text.dart';
+import 'package:marketna_app/constants/text/validator_text.dart';
 
 class ValidatorTranslations {
   Map<String, String> get keys => {

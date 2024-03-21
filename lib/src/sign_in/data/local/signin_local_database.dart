@@ -1,5 +1,5 @@
 import 'package:get_storage/get_storage.dart';
-import 'package:marketna_app/generated/local_storage_keys.dart';
+import 'package:marketna_app/constants/local_storage_keys.dart';
 
 abstract class SigninLocalDatabase {
   /// saveProfile

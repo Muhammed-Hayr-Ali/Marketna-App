@@ -7,4 +7,5 @@ abstract class HomeRepo {
   Future<String> retrievePremiumProduct();
   Future<String> retrieveCategory();
   Future<String> retrieveAllProduct();
+  Future<String> getCurrentUser();
 }

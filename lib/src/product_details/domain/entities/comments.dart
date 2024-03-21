@@ -17,10 +17,9 @@ class Comments with _$Comments {
     @Default('') String comment,
     required int user_id,
     required int product_id,
-    User? user,
+    required User user,
+    required String created_at,
   }) = _Comments;
-
-  
 
   factory Comments.fromJson(Map<String, dynamic> json) =>
       _$CommentsFromJson(json);
@@ -30,5 +29,6 @@ class Comments with _$Comments {
         user_id: 0,
         product_id: 0,
         user: User.empty(),
+        created_at: '',
       );
 }

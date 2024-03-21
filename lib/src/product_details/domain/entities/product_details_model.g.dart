@@ -43,18 +43,6 @@ _$ProductDetailsModelImpl _$$ProductDetailsModelImplFromJson(
       user: json['user'] == null
           ? null
           : Author.fromJson(json['user'] as Map<String, dynamic>),
-      images: (json['images'] as List<dynamic>?)
-              ?.map((e) => Images.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const <Images>[],
-      comments: (json['comments'] as List<dynamic>?)
-              ?.map((e) => Comments.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const <Comments>[],
-      rating: (json['rating'] as List<dynamic>?)
-              ?.map((e) => Rating.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const <Rating>[],
     );
 
 Map<String, dynamic> _$$ProductDetailsModelImplToJson(
@@ -84,7 +72,4 @@ Map<String, dynamic> _$$ProductDetailsModelImplToJson(
       'status': instance.status,
       'unit': instance.unit,
       'user': instance.user,
-      'images': instance.images,
-      'comments': instance.comments,
-      'rating': instance.rating,
     };

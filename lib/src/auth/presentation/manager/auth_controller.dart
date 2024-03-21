@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:marketna_app/generated/strings.dart';
+import 'package:marketna_app/constants/strings.dart';
 import 'package:marketna_app/routes/app_pages.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:marketna_app/shared/provider/api_result/api_result.dart';

@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 
-import 'package:marketna_app/generated/assets.dart';
+import 'package:marketna_app/constants/assets.dart';
 import 'package:rive/rive.dart';
 
 class LoginAnimationController extends GetxController {

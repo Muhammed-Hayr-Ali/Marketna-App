@@ -104,4 +104,9 @@ class HomeRepoImpl implements HomeRepo {
   Future<String> retrievePremiumProduct() async {
     return await localDatabase.getPremiumProduct();
   }
+
+  @override
+  Future<String> getCurrentUser() async {
+    return await localDatabase.getCurrentUser();
+  }
 }

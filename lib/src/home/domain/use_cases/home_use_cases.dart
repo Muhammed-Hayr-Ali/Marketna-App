@@ -8,6 +8,7 @@ abstract class HomeUseCases {
   Future<String> retrievePremiumProduct();
   Future<String> retrieveCategory();
   Future<String> retrieveAllProduct();
+  Future<String> getCurrentUser();
 }
 
 class HomeUseCasesImpl implements HomeUseCases {
@@ -42,5 +43,10 @@ class HomeUseCasesImpl implements HomeUseCases {
   @override
   Future<String> retrievePremiumProduct() async {
     return await homeRepo.retrievePremiumProduct();
+  }
+
+  @override
+  Future<String> getCurrentUser() async {
+    return await homeRepo.getCurrentUser();
   }
 }

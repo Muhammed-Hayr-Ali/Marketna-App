@@ -3,10 +3,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:marketna_app/src/product_details/domain/entities/author.dart';
 import 'package:marketna_app/src/product_details/domain/entities/category.dart';
-import 'package:marketna_app/src/product_details/domain/entities/comments.dart';
-import 'package:marketna_app/src/product_details/domain/entities/images.dart';
 import 'package:marketna_app/src/product_details/domain/entities/level.dart';
-import 'package:marketna_app/src/product_details/domain/entities/rating.dart';
 import 'package:marketna_app/src/product_details/domain/entities/status.dart';
 import 'package:marketna_app/src/product_details/domain/entities/unit.dart';
 
@@ -36,14 +33,18 @@ class ProductDetailsModel with _$ProductDetailsModel {
     required String quantity,
     required String created_at,
     required String updated_at,
-     Category? category,
-     Level? level,
-     Status? status,
-     Unit? unit,
-     Author? user,
-    @Default(<Images>[]) List<Images> images,
-   @Default(<Comments>[]) List<Comments> comments,
-    @Default(<Rating>[]) List<Rating> rating,
+    Category? category,
+    Level? level,
+    Status? status,
+    Unit? unit,
+    Author? user,
+    // @Default(<Images>[]) List<Images> images,
+    // @Default(<Comments>[]) List<Comments> comments,
+    // @Default(<Rating>[]) List<Rating> rating,
+    // @Default(<Dimensions>[]) List<Dimensions> dimensions,
+    // @Default(<Colors>[]) List<Dimensions> colors,
+    // @Default(<Sizes>[]) List<Dimensions> sizes,
+    // @Default(<Weights>[]) List<Dimensions> weights,
   }) = _ProductDetailsModel;
 
   factory ProductDetailsModel.blank() => ProductDetailsModel.empty();
@@ -73,10 +74,14 @@ class ProductDetailsModel with _$ProductDetailsModel {
         category: Category.empty(),
         level: Level.empty(),
         status: Status.empty(),
-        images: [],
-   //     comments: [],
-        rating: [],
         unit: Unit.empty(),
         user: Author.empty(),
+        // images: [],
+        // comments: [],
+        // rating: [],
+        // dimensions: [],
+        // colors: [],
+        // sizes: [],
+        // weights: [],
       );
 }

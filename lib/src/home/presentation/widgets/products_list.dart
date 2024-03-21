@@ -2,9 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import 'package:marketna_app/generated/app_colors.dart';
+import 'package:marketna_app/constants/app_colors.dart';
 import 'package:marketna_app/routes/app_pages.dart';
-import 'package:marketna_app/shared/converter/rating_converter.dart';
+import 'package:marketna_app/shared/converter/rating_model_converter.dart';
+import 'package:marketna_app/shared/converter/string_converter.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 import 'package:marketna_app/shared/widget/ink.dart';
 import 'package:marketna_app/shared/widget/widget_placeholder.dart';
@@ -67,7 +68,8 @@ Widget card(
                   ? CachedNetworkImage(
                       filterQuality: FilterQuality.low,
                       fit: BoxFit.cover,
-                      imageUrl: product.thumbnailImage!,
+                      imageUrl: StringConvrter.url(
+                          url: product.thumbnailImage!),
                       placeholder: (context, url) => WidgetPlaceholder.loading(
                           child: Container(color: Colors.white)),
                       errorWidget: (context, url, error) =>
@@ -88,7 +90,7 @@ Widget card(
               CustomText(product.productName.toString(),
                   overflow: TextOverflow.ellipsis,
                   fontSize: 14,
-                  color: AppColors.grayColor),
+                  color: AppColors.gray),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -104,7 +106,7 @@ Widget card(
                             : Colors.amberAccent,
                         size: 12,
                       ),
-                      Text(RatingConverter.rati(product.rating!),
+                      Text(RatingModelConverter.ratingToString(product.rating!),
                           style: const TextStyle(
                               fontSize: 12, fontWeight: FontWeight.w600)),
                     ],

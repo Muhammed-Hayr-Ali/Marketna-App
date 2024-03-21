@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marketna_app/generated/app_colors.dart';
+import 'package:marketna_app/constants/app_colors.dart';
 
 class CustomButton extends StatelessWidget {
   final Widget child;
@@ -21,7 +21,9 @@ class CustomButton extends StatelessWidget {
       this.color,
       required this.isLoading,
       this.padding,
-      this.elevation, this.progressColor, this.borderRadius = 10});
+      this.elevation,
+      this.progressColor,
+      this.borderRadius = 10});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class CustomButton extends StatelessWidget {
             ? SizedBox(
                 height: height != null ? height! / 2 : 50 / 2,
                 width: height != null ? height! / 2 : 50 / 2,
-                child:  CircularProgressIndicator(
+                child: CircularProgressIndicator(
                   strokeWidth: 1,
                   color: progressColor ?? AppColors.primaryColor,
                 ))

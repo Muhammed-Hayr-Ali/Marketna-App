@@ -7,18 +7,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:121132297588:android:8ad3a06ab5129e8a42d021",
+        "mobilesdk_app_id": "1:121132297588:android:5259adc2c4959ba242d021",
         "android_client_info": {
           "package_name": "com.example.marketna_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "121132297588-eg9csi7va5816q7um4ce0hseee0rkddi.apps.googleusercontent.com",
+          "client_id": "121132297588-cc1dkkvgbb7gghbirr375hnmg568io9v.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.marketna_app",
-            "certificate_hash": "1a61ab1cd5b11e99d7da68692690fb0c9dcb519a"
+            "certificate_hash": "56dd0db89d1f0247de836098733850d5cad72384"
           }
         },
         {

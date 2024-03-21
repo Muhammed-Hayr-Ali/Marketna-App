@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marketna_app/generated/app_colors.dart';
+import 'package:marketna_app/constants/app_colors.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -68,7 +68,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               ? CustomText(
                   widget.label,
                   fontSize: 12,
-                  color: AppColors.grayColor,
+                  color: AppColors.gray,
                 )
               : const SizedBox.shrink(),
           SizedBox(height: widget.label != null ? 6 : 0),
@@ -85,7 +85,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             onChanged: widget.onChanged,
             cursorHeight: 26,
             style: TextStyle(
-                color: AppColors.grayColor, fontWeight: FontWeight.bold),
+                color: AppColors.gray, fontWeight: FontWeight.bold),
             decoration: InputDecoration(
               prefix: widget.prefix,
               hintText: (widget.hintText ?? '').tr,
@@ -98,13 +98,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                   ? Icons.visibility
                                   : Icons.visibility_off,
                               size: 16,
-                              color: AppColors.grayColor,
+                              color: AppColors.gray,
                             )
                           : widget.enabledSuffix
                               ? Icon(
                                   Icons.cancel,
                                   size: 16,
-                                  color: AppColors.grayColor,
+                                  color: AppColors.gray,
                                 )
                               : null,
                     )

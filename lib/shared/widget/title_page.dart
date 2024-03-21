@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marketna_app/generated/app_colors.dart';
+import 'package:marketna_app/constants/app_colors.dart';
 import 'package:marketna_app/shared/widget/custom_text.dart';
 
 class PageTitle extends StatelessWidget {
@@ -26,7 +26,7 @@ class PageTitle extends StatelessWidget {
         SizedBox(
           child: subTitle != null
               ? CustomText('$subTitle'.tr,
-                  color: AppColors.grayColor,
+                  color: AppColors.gray,
                   fontSize: 12,
                   fontWeight: FontWeight.w300)
               : null,

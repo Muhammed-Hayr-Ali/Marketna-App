@@ -1,4 +1,4 @@
-import 'package:marketna_app/shared/text/api_exception_text.dart';
+import 'package:marketna_app/constants/text/api_exception_text.dart';
 
 class ApiExceptionTranslations {
   Map<String, String> get keys => {
@@ -53,5 +53,7 @@ class ApiExceptionTranslations {
             'Premium Products retrieved successfully',
         ApiExceptionText.allProductsRetrieved:
             'All Products retrieved successfully',
+        ApiExceptionText.dataNotFound: 'The data were not found',
+        ApiExceptionText.dataRetrieved: 'Data retrieved successfully',
       };
 }

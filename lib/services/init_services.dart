@@ -12,6 +12,8 @@ import 'package:marketna_app/src/update_pass/data/services/updaet_pass_service.d
 
 Future<void> initServices() async {
   await GetStorage.init();
+  //Remove this method to stop OneSignal Debugging
+  // OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
   await Get.putAsync(() => SplashService().init());
   await Get.putAsync(() => AuthService().init());
   await Get.putAsync(() => SignupService().init());
@@ -21,5 +23,4 @@ Future<void> initServices() async {
   await Get.putAsync(() => HomeServices().init());
   await Get.putAsync(() => ProfileServices().init());
   await Get.putAsync(() => ProductDetailsService().init());
-
 }

@@ -1,4 +1,4 @@
-import 'package:marketna_app/shared/text/signin_text.dart';
+import 'package:marketna_app/constants/text/signin_text.dart';
 
 class SigninScreenTranslations {
   Map<String, String> get keys => {

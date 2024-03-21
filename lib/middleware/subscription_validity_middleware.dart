@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
-import 'package:marketna_app/generated/local_storage_keys.dart';
+import 'package:marketna_app/constants/local_storage_keys.dart';
 import 'package:marketna_app/shared/widget/custom_notification.dart';
 import 'package:marketna_app/src/profile/domain/entities/profile_model.dart';
 

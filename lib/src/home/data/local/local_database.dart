@@ -1,5 +1,5 @@
 import 'package:get_storage/get_storage.dart';
-import 'package:marketna_app/generated/local_storage_keys.dart';
+import 'package:marketna_app/constants/local_storage_keys.dart';
 
 abstract class HomeLocalDatabase {
 
@@ -9,6 +9,7 @@ abstract class HomeLocalDatabase {
   Future<void> savePremiumProduct({required String premiumProduct});
   Future<void> saveCategory({required String category});
   Future<void> savegetAllProduct({required String allProduct});
+  Future<String> getCurrentUser();
   
 }
 
@@ -59,5 +60,14 @@ class HomeLocalDatabaseImpl implements HomeLocalDatabase {
   Future<void> savegetAllProduct( {required String allProduct}) async {
     await storage.write(LocalStorageKeys.allProduct, allProduct);
     return Future.value();
+  }
+  
+  @override
+  Future<String> getCurrentUser() async {
+    final currentUser = await storage.read(LocalStorageKeys.profile);
+    if (currentUser == null) {
+      return Future.value('');
+    }
+    return Future.value(currentUser);
   }
 }

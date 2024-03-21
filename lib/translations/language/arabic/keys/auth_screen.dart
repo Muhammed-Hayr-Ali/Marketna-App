@@ -1,4 +1,4 @@
-import 'package:marketna_app/shared/text/auth_text.dart';
+import 'package:marketna_app/constants/text/auth_text.dart';
 
 class AuthScreenTranslations {
   Map<String, String> get keys => {

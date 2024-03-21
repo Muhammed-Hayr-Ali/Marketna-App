@@ -15,4 +15,5 @@ abstract class AppRoutes {
   static const profile = '/profile';
   static const test = '/test';
   static const productDetails = '/productDetails';
+  static const imageViewer = '/imageViewer';
 }

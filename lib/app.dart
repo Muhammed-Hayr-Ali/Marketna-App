@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:marketna_app/routes/app_pages.dart';
 import 'package:marketna_app/shared/theme/themes.dart';
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.top]);
     return GetMaterialApp(
       useInheritedMediaQuery: true,
       debugShowCheckedModeBanner: false,
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       translations: Localization(),
       title: 'Marketna',
       theme: AppThemeData.lightTheme,
-      defaultTransition:  Transition.fade,
+      defaultTransition: Transition.fade,
       // initialBinding: isAuthenticated ? HomeBinding() : AuthBinding(),
       initialRoute: AppRoutes.splash,
       getPages: RouteGet.getPages,

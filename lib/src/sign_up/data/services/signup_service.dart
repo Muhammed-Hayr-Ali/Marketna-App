@@ -8,11 +8,12 @@ import 'package:marketna_app/src/sign_up/domain/usecases/signup_use_cases_impl.d
 class SignupService extends GetxService {
   Future<SignupService> init() async {
     Get.put<SignupLocalDatabase>( SignupLocalDatabaseImpl());
-    Get.put<SignupRemoteDatabase>( SignupRemoteDatabaseImpl());
+    Get.put<SignupRemoteDatabase>(SignupRemoteDatabaseImpl());
 
     Get.put<SignupRepo>( SignupRepoImpl(
         localDatabase: Get.find<SignupLocalDatabase>(),
-        remoteDatabase: Get.find<SignupRemoteDatabase>()));
+        remoteDatabase: Get.find<SignupRemoteDatabase>(),
+        ));
 
 
     Get.put<SignUpUseCasesImpl>(SignUpUseCasesImpl(signupRepo: Get.find<SignupRepo>()));

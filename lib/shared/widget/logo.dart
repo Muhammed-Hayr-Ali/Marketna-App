@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:marketna_app/generated/assets.dart';
-import 'package:marketna_app/generated/strings.dart';
+import 'package:marketna_app/constants/assets.dart';
+import 'package:marketna_app/constants/strings.dart';
 
 enum LogoType { horizontal, vertical }
 

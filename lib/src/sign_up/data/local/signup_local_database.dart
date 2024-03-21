@@ -1,6 +1,6 @@
 import 'package:get_storage/get_storage.dart';
-import 'package:marketna_app/generated/local_storage_keys.dart';
-import 'package:marketna_app/generated/strings.dart';
+import 'package:marketna_app/constants/local_storage_keys.dart';
+import 'package:marketna_app/constants/strings.dart';
 
 abstract class SignupLocalDatabase {
   /// saveProfile
@@ -8,6 +8,9 @@ abstract class SignupLocalDatabase {
 
   /// saveToken
   Future<void> saveToken({required String token});
+
+
+
 }
 
 class SignupLocalDatabaseImpl implements SignupLocalDatabase {
@@ -24,4 +27,5 @@ class SignupLocalDatabaseImpl implements SignupLocalDatabase {
     await storage.write(LocalStorageKeys.token, token);
     return Future.value();
   }
+
 }
